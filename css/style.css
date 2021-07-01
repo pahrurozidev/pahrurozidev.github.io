@@ -155,6 +155,7 @@ footer {
 }
 
 @media (max-width: 480px) {
+
     .logo {
         margin-left: -60px;
         padding: 0 0.5em;
@@ -178,8 +179,7 @@ footer {
         flex-direction: column;
         display: none;
         text-align: center;
-        margin-right: 200px;
-
+        margin-right: 400px;
     }
 
     .nav li {
