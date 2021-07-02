@@ -256,7 +256,7 @@ section {
     }
 
     .menu ul {
-        width: 400px;
+        width: 300px;
     }
 
     .nav ul {
@@ -271,6 +271,11 @@ section {
     .nav li {
         padding-bottom: 2em;
         text-align: center;
+    }
+
+    .menu li.sub-menu {
+        display: inline-block;
+        margin-left: 100px;
     }
 
     .bar {
