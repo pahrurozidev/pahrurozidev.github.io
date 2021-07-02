@@ -88,7 +88,7 @@ article {
 
 /* footer */
 footer {
-    background-color: rgba(0, 0, 0, .6);
+    background-color: silver;
     padding: 50px;
     color: white;
 }
@@ -96,20 +96,17 @@ footer {
 /* end footer */
 
 /* article */
+/* article */
 .part-section {
-    width: 800px;
     display: flex;
     margin: auto;
     flex-wrap: wrap;
     justify-content: center;
-
 }
 
 section {
     margin-left: 10px;
 }
-
-/* end article */
 
 /* dropdown */
 .menu {
@@ -121,7 +118,7 @@ section {
     margin: 0 auto;
     padding: 0;
     overflow: hidden;
-    background-color: skyblue;
+    background-color: #08a07a;
     width: 200px;
     border-radius: 30px;
 }
@@ -141,7 +138,7 @@ section {
 .menu li a:hover,
 .sub-menu:hover {
     opacity: 0.9;
-    background-color: skyblue;
+    background-color: #08a07a;
 }
 
 .menu li.sub-menu {
@@ -163,7 +160,7 @@ section {
 }
 
 .menu .sub-menu-konten a:hover {
-    background-color: skyblue;
+    background-color: #08a07a;
 }
 
 .menu .sub-menu:hover .sub-menu-konten {
@@ -275,7 +272,5 @@ section {
     .bar {
         opacity: 1;
     }
-
-
 
 }
