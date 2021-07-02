@@ -88,7 +88,7 @@ article {
 
 /* footer */
 footer {
-    background-color: silver;
+    background-color: rgba(0, 0, 0, .6);
     padding: 50px;
     color: white;
 }
@@ -97,13 +97,16 @@ footer {
 
 /* article */
 .part-section {
+    width: 800px;
     display: flex;
-    flex-direction: row;
+    margin: auto;
+    flex-wrap: wrap;
     justify-content: center;
+
 }
 
 section {
-    margin: 10px;
+    margin-left: 10px;
 }
 
 /* end article */
@@ -118,7 +121,7 @@ section {
     margin: 0 auto;
     padding: 0;
     overflow: hidden;
-    background-color: #08a07a;
+    background-color: skyblue;
     width: 200px;
     border-radius: 30px;
 }
@@ -138,12 +141,12 @@ section {
 .menu li a:hover,
 .sub-menu:hover {
     opacity: 0.9;
-    background-color: #08a07a;
+    background-color: skyblue;
 }
 
 .menu li.sub-menu {
     display: inline-block;
-    margin-left: 65px;
+    margin-left: 50px;
 }
 
 .menu .sub-menu-konten {
@@ -160,7 +163,7 @@ section {
 }
 
 .menu .sub-menu-konten a:hover {
-    background-color: #08a07a;
+    background-color: skyblue;
 }
 
 .menu .sub-menu:hover .sub-menu-konten {
@@ -272,5 +275,7 @@ section {
     .bar {
         opacity: 1;
     }
+
+
 
 }
