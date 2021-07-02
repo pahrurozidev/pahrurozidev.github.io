@@ -255,6 +255,10 @@ section {
         padding: 1em 6em;
     }
 
+    .menu ul {
+        width: 400px;
+    }
+
     .nav ul {
         padding-top: 3em;
         flex-direction: column;
