@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'viga';
-    src: url('font/viga-regular-webfont.woff') format('woff');
+    src: url('../font/viga-regular-webfont.woff') format('woff');
 }
 
 /* body */
@@ -72,6 +72,21 @@ p {
 main {
     background-color: transparent;
 }
+
+/* article */
+/* #contact {
+    padding-top: 40px;
+} */
+
+#about,
+#projects,
+#galery,
+#contact {
+    padding-top: 80px;
+}
+
+/* article */
+
 
 /* end main */
 
@@ -160,7 +175,7 @@ section {
 }
 
 .menu .sub-menu-konten a:hover {
-    background-color: sk;
+    background-color: skyblue;
 }
 
 .menu .sub-menu:hover .sub-menu-konten {
@@ -236,7 +251,6 @@ section {
 }
 
 @media (max-width: 480px) {
-
     .logo {
         margin-left: -75px;
         padding: 0 0.5em;
@@ -274,7 +288,6 @@ section {
     }
 
     .menu li.sub-menu {
-        display: inline-block;
         margin-left: 100px;
     }
 
@@ -282,4 +295,18 @@ section {
         opacity: 1;
     }
 
+}
+
+/* galery */
+.card {
+    border-radius: 5px;
+    margin: 30px 15px;
+}
+
+img {
+    width: 200px;
+    height: 180px;
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
