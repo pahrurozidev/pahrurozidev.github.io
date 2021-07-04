@@ -85,7 +85,12 @@ main {
     padding-top: 80px;
 }
 
+#galery {
+    margin-bottom: 300px !important;
+}
+
 /* article */
+
 
 
 /* end main */
@@ -114,7 +119,7 @@ footer {
 /* article */
 .part-section {
     display: flex;
-    margin: auto;
+    margin: 20px auto;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -294,6 +299,10 @@ img {
         text-align: center;
         margin-right: 400px;
         margin-left: -20px;
+    }
+
+    #projects {
+        margin-bottom: -15px;
     }
 
     .nav li {
