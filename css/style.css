@@ -250,6 +250,20 @@ section {
     opacity: 0;
 }
 
+/* galery */
+.card {
+    border-radius: 5px;
+    margin: 30px 15px;
+}
+
+img {
+    width: 200px;
+    height: 180px;
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width: 480px) {
     .logo {
         margin-left: -75px;
@@ -295,18 +309,14 @@ section {
         opacity: 1;
     }
 
-}
+    /* galery */
+    .card {
+        margin: 15px;
+    }
 
-/* galery */
-.card {
-    border-radius: 5px;
-    margin: 30px 15px;
-}
+    img {
+        width: 300px;
+        height: 260px;
+    }
 
-img {
-    width: 200px;
-    height: 180px;
-    border-radius: 5px;
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
