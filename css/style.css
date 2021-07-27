@@ -111,7 +111,7 @@ article {
 
 /* footer */
 footer {
-    background-color: silver;
+    background-color: rgb(49, 49, 49);
     padding: 50px;
     color: white;
 }
@@ -207,6 +207,7 @@ section {
     color: #fff;
     padding: .3em 6em;
     position: fixed;
+    z-index: 999;
     width: 100%;
 }
 
