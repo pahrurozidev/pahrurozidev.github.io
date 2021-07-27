@@ -322,7 +322,7 @@ button {
 
 /* MOBILE VERSION */
 
-@media (max-width: 480px) {
+@media (max-width: 440px) {
     .logo {
         margin-left: -75px;
         padding: 0 0.5em;
@@ -351,7 +351,7 @@ button {
         display: none;
         text-align: center;
         margin-right: 400px;
-        margin-left: -20px;
+        margin-left: -40px;
     }
 
     #projects {
@@ -387,7 +387,7 @@ button {
     width: 100%;
     margin: auto;
     margin-top: 40px;
-}
+    }
 
 }
 
