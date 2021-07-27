@@ -247,8 +247,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 21px;
+    width: 22px;
+    height: 16px;
     cursor: pointer;
 }
 
