@@ -300,7 +300,7 @@ input {
     width: 400px;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid rgb(124, 124, 124);
+    border: 2px solid rgb(124, 124, 124);
 }
 
 button {
@@ -310,6 +310,14 @@ button {
     background-color: skyblue;
     border: 1px solid rgb(128, 128, 128);
     border-radius: 5px;
+}
+
+.deskripsi {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 600px;
+    margin: auto;
+    margin-top: 40px;
 }
 
 /* MOBILE VERSION */
@@ -374,3 +382,4 @@ button {
     }
 
 }
+

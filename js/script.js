@@ -7,3 +7,4 @@ responsive.addEventListener("click" , function () {
     view.style.display = 'none'
   }
 });
+
