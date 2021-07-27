@@ -306,15 +306,15 @@ input {
 button {
     margin-top: -10px;
     width: 410px;
-    padding: 4px;
+    padding: 5px;
     background-color: skyblue;
-    border: 1px solid rgb(128, 128, 128);
+    border: 2px solid rgb(128, 128, 128);
     border-radius: 5px;
 }
 
 .deskripsi {
-    font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 600px;
     margin: auto;
     margin-top: 40px;
@@ -351,7 +351,7 @@ button {
         display: none;
         text-align: center;
         margin-right: 400px;
-        margin-left: -30px;
+        margin-left: -33px;
     }
 
     #projects {
@@ -382,8 +382,6 @@ button {
     }
 
     .deskripsi {
-    font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
     width: 100%;
     margin: auto;
     margin-top: 40px;
