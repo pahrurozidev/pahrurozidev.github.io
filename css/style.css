@@ -326,11 +326,15 @@ button {
     background-repeat: no-repeat;
     width: 20px;
     height: 20px;
-    margin: 2px;
+    margin: 20px;
 }
 
 .svg {
     text-align: center;
+}
+
+.svg a {
+    color: transparent;
 }
 
 /* MOBILE VERSION */
