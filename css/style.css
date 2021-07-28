@@ -55,7 +55,7 @@ li a {
     padding: 5px;
     order: 2;
     display: block;
-    padding: 50px;
+    padding: 100px 50px 50px;
     font-weight: bold;
 }
 
@@ -64,8 +64,12 @@ p {
     text-align: center;
 }
 
+p {
+    font-size: 14px;
+}
+
 .jumbotron span {
-    color: black;
+    color: rgb(29, 27, 27);
     font-weight: bolder;
 }
 
@@ -114,6 +118,10 @@ footer {
     background-color: rgb(49, 49, 49);
     padding: 50px;
     color: white;
+}
+
+footer p {
+    font-size: 12px;
 }
 
 /* end footer */
@@ -299,7 +307,7 @@ label {
 
 input {
     width: 400px;
-    padding: 5px;
+    padding: 7px;
     border-radius: 5px;
     border: 2px solid rgb(124, 124, 124);
 }
@@ -307,7 +315,7 @@ input {
 button {
     margin-top: -10px;
     width: 410px;
-    padding: 6px;
+    padding: 8px;
     background-color: rgb(78, 85, 180);
     border: 2px solid rgb(128, 128, 128);
     border-radius: 5px;
@@ -320,12 +328,20 @@ button {
     width: 600px;
     margin: auto;
     margin-top: 40px;
+    box-sizing: border-box;
+    padding: 0 10px 0;
+    text-align: center;
+}
+
+.deskripsi h3 {
+    font-size: 12px;
 }
 
 #svg {
     width: 20px;
     height: 20px;
     margin: 10px;
+    padding: 2px;
 }
 
 .svg {
@@ -367,7 +383,7 @@ button {
         display: none;
         text-align: center;
         margin-right: 400px;
-        margin-left: -30px;
+        margin-left: -32px;
     }
 
     #projects {
