@@ -57,10 +57,9 @@ li a {
 .jumbotron {
     background-color: rgb(78, 85, 180);
     color: white;
-    padding: 5px;
     order: 2;
     display: block;
-    padding: 100px 50px 50px;
+    padding: 130px 50px 50px;
     font-weight: bold;
 }
 
@@ -257,7 +256,7 @@ section {
 
 .toggle {
     position: absolute;
-    top: 1.5rem;
+    top: 1.45rem;
     right: -20px;
     display: flex;
     flex-direction: column;
@@ -331,10 +330,9 @@ button {
 
 .deskripsi {
     font-size: 14px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 600px;
     margin: auto;
-    margin-top: 40px;
+    margin-top:25px !important;
     box-sizing: border-box;
     padding: 0 10px 0;
     text-align: center;
@@ -342,10 +340,6 @@ button {
 
 .deskripsi h3 {
     font-size: 12px;
-}
-
-.deskripsi .lorem {
-    text-align: center;
 }
 
 .deskripsi p {
@@ -399,7 +393,7 @@ button {
         display: none;
         text-align: center;
         margin-right: 400px;
-        margin-left: -60px;
+        margin-left: -58px;
     }
 
     #projects {
