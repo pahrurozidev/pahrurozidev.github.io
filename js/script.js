@@ -19,11 +19,12 @@ $.ajax({
     },
     success: function (result) {
         const url = result.items
+        console.log(url);
         $.each(url, function (i, data) {
             const urlProfile = data.snippet.thumbnails.medium.url;
+            // const urlSubscribe = data.statistics.subscriberCount;
             $('.profile-api').attr('src', urlProfile);
-            const urlSubscribe = data.statistics.subscriberCount;
-            $('.profile').append(`<h5 class="subscriber">${urlSubscribe} Subscribe</h5>`);
+            // $('.profile').append(`<h5 class="subscriber">${urlSubscribe} Subscribe</h5>`);
         });
     }
 });
@@ -43,7 +44,7 @@ $.ajax({
         let url = result.items;
       $.each(url, function (i, data) {
           let url = data.id.videoId;
-            $('iframe').attr('src', `https://www.youtube.com/embed/${url}`);
+          $('iframe').attr('src', `https://www.youtube.com/embed/${url}`);
         });
     }
 });
