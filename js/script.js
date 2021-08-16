@@ -19,12 +19,14 @@ $.ajax({
     },
     success: function (result) {
         const url = result.items
-        console.log(url);
         $.each(url, function (i, data) {
             const urlProfile = data.snippet.thumbnails.medium.url;
-            // const urlSubscribe = data.statistics.subscriberCount;
+            const urlSubscribe = data.statistics.subscriberCount;
+            const titleYt = data.snippet.titleYt;
+            console.log(titleYt);
             $('.profile-api').attr('src', urlProfile);
-            // $('.profile').append(`<h5 class="subscriber">${urlSubscribe} Subscribe</h5>`);
+            $('.titleYt').html(`${titleYt} Subscribe`);
+            $('.subscribe').html(urlSubscribe);
         });
     }
 });
