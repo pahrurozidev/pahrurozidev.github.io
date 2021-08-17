@@ -22,11 +22,10 @@ $.ajax({
         $.each(url, function (i, data) {
             const urlProfile = data.snippet.thumbnails.medium.url;
             const urlSubscribe = data.statistics.subscriberCount;
-            const titleYt = data.snippet.titleYt;
-            console.log(titleYt);
-            $('.profile-api').attr('src', urlProfile);
-            $('.titleYt').html(`${titleYt} Subscribe`);
-            $('.subscribe').html(urlSubscribe);
+            const urlTitleYt = data.snippet.title;
+            $('.profile-api').attr('src', `${urlProfile}`);
+            $('.titleYt').html(`${urlTitleYt}`);
+            $('.subscribe').html(`${urlSubscribe} Subscribe`);
         });
     }
 });
