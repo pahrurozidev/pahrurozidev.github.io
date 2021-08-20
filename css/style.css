@@ -8,18 +8,15 @@
     src: url('../font/Boarding\ PersonalUse.ttf');
 }
 
-/* body */
 * {
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'viga', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    margin: 0;
-    color: black;
 }
-
-/* end body */
 
 /* header */
 header {
@@ -65,34 +62,11 @@ header {
     padding-bottom: 2px;
 }
 
-.des h5, .des p {
+.des h5,
+.des p {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* navigation */
-nav {
-    order: 1;
-    background-color: rgb(59, 67, 177);
-}
-
-nav ul {
-    float: right;
-    margin-right: 40px;
-}
-
-ul li {
-    display: inline-block;
-}
-
-li a {
-    color: white;
-    text-decoration: none;
-    margin-right: 20px;
-    text-align: center;
-}
-
-
-/* end navigation */
 
 /* Jumbotron */
 .jumbotron {
@@ -102,6 +76,8 @@ li a {
     display: block;
     padding: 130px 50px 50px;
     font-weight: bold;
+    position: relative;
+    z-index: -2;
 }
 
 .welcome,
@@ -118,17 +94,99 @@ p {
     font-weight: bolder;
 }
 
-/* end Jumbotron */
+/* navbar */
+nav {
+    display: flex;
+    background-color: rgb(70, 77, 181);
+    justify-content: space-around;
+    height: 50px;
+    color: rgb(187, 129, 242);
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    width: 40%;
+    justify-content: space-between;
+}
+
+nav .logo {
+    font-family: 'boarding', Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    color: rgb(220, 209, 232);
+}
+
+nav ul li a {
+    color: rgb(187, 129, 242);
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: rgb(230, 211, 247);
+}
+
+/* hamburger menu */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
+    position: relative;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 23px;
+    height: 3px;
+    background-color: rgb(187, 129, 242);
+    border-radius: 3px;
+    transition: all .5s;
+}
+
+.menu-toggle input {
+    position: absolute;
+    top: -2px;
+    left: -11px;
+    width: 50px;
+    height: 28px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 4;
+}
+
+/* hamburger menu animation */
+.menu-toggle span:nth-child(2) {
+    transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(4) {
+    transform: rotate(0 100%);
+}
+
+.menu-toggle input:checked~span:nth-child(2) {
+    transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.menu-toggle input:checked~span:nth-child(3) {
+    transform: scale(0);
+}
+
+.menu-toggle input:checked~span:nth-child(4) {
+    transform: rotate(-45deg) translate(4px, -10px);
+}
 
 /* main */
 main {
     background-color: transparent;
+    position: relative;
+    z-index: -100;
 }
 
 /* article */
-/* #contact {
+#contact {
     padding-top: 40px;
-} */
+}
 
 #about,
 #projects,
@@ -252,67 +310,6 @@ section {
 
 
 /* --------------------------------------------------- */
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    background: rgb(78, 85, 180);
-    color: #fff;
-    padding: .3em 5em;
-    position: fixed;
-    z-index: 999;
-    width: 100%;
-}
-
-.logo {
-    margin-top: 10px;
-}
-
-.logo a {
-    font-family: 'boarding';
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    font-size: 25px !important;
-}
-
-
-.nav ul {
-    display: flex;
-    align-content: center;
-    margin-right: 100px;
-    margin-top: 14px;
-}
-
-.nav li {
-    list-style: none;
-}
-
-.nav a {
-    text-decoration: none;
-    color: #fff;
-    padding-right: 2em;
-    font-size: 1em;
-}
-
-.toggle {
-    position: absolute;
-    top: 1.45rem;
-    right: -20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 22px;
-    height: 16px;
-    cursor: pointer;
-}
-
-.bar {
-    width: 100%;
-    background: rgb(255, 255, 255);
-    height: 2px;
-    opacity: 0;
-}
 
 /* galery */
 .card {
@@ -352,12 +349,12 @@ label {
     left: 50;
 }
 
-input {
+/* input {
     width: 400px;
     padding: 7px;
     border-radius: 5px;
     border: 2px solid rgb(124, 124, 124);
-}
+} */
 
 button {
     margin-top: -10px;
@@ -373,7 +370,7 @@ button {
     font-size: 14px;
     width: 600px;
     margin: auto;
-    margin-top:25px !important;
+    margin-top: 25px !important;
     box-sizing: border-box;
     padding: 0 10px 0;
     text-align: center;
@@ -406,12 +403,6 @@ button {
 /* MOBILE VERSION */
 
 @media (max-width: 440px) {
-    .logo {
-        margin-left: -75px;
-        padding: 0 0.5em;
-        margin-top: 0px;
-    }
-
     .toggle {
         display: flex;
         position: absolute;
@@ -420,39 +411,6 @@ button {
         margin-top: 1px;
     }
 
-    .nav {
-        padding: 1em 6em;
-    }
-
-    .menu ul {
-        width: 300px;
-    }
-
-    .nav ul {
-        padding-top: 3em;
-        flex-direction: column;
-        display: none;
-        text-align: center;
-        margin-right: 400px;
-        margin-left: -58px;
-    }
-
-    #projects {
-        margin-bottom: -15px;
-    }
-
-    .nav li {
-        padding-bottom: 2em;
-        text-align: center;
-    }
-
-    .menu li.sub-menu {
-        margin-left: 100px;
-    }
-
-    .bar {
-        opacity: 1;
-    }
 
     /* galery */
     .card {
@@ -465,9 +423,9 @@ button {
     }
 
     .deskripsi {
-    width: 100%;
-    margin: auto;
-    margin-top: 40px;
+        width: 100%;
+        margin: auto;
+        margin-top: 40px;
     }
 
     .card img {
@@ -476,9 +434,46 @@ button {
     }
 
     .profile-api {
-    width: 90px;
-    height: 90px;
-}
+        width: 90px;
+        height: 90px;
+    }
 
 }
 
+
+/* responsive breakpoint */
+
+/* ukuran tablet */
+@media screen and (max-width: 768px) {
+    nav ul {
+        width: 50%;
+    }
+}
+
+/* ukuran handphone */
+@media screen and (max-width: 576px) {
+
+    .menu-toggle {
+        display: flex;
+    }
+
+
+    nav ul {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        background-color: rgb(70, 77, 181);
+        align-items: center;
+        justify-content: space-evenly;
+        z-index: -1;
+        transform: translateY(-100%);
+        transition: all 1s;
+    }
+
+    nav ul.slide {
+        transform: translateY(0);
+    }
+}
