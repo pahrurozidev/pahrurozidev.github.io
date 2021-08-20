@@ -14,86 +14,6 @@
     padding: 0;
 }
 
-body {
-    font-family: 'viga', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-/* header */
-header {
-    display: flex;
-    flex-direction: column;
-}
-
-.subscriber {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-/* end header */
-
-.profile {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.profile-api {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-}
-
-.image {
-    padding-right: 15px;
-    margin-left: -40px;
-}
-
-.des {
-    margin: -25px 0 0 0;
-}
-
-.des h5 {
-    margin-left: -8px;
-}
-
-.des p {
-    margin-left: -21px;
-    margin-top: -23px;
-    font-size: 12px;
-    padding-bottom: 2px;
-}
-
-.des h5,
-.des p {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-
-/* Jumbotron */
-.jumbotron {
-    background-color: rgb(78, 85, 180);
-    color: white;
-    order: 2;
-    display: block;
-    padding: 130px 50px 50px;
-    font-weight: bold;
-    position: relative;
-    z-index: -2;
-}
-
-.welcome,
-p {
-    text-align: center;
-}
-
-p {
-    font-size: 14px;
-}
-
-.jumbotron span {
-    color: rgb(29, 27, 27);
-    font-weight: bolder;
-}
-
 /* navbar */
 nav {
     display: flex;
@@ -102,8 +22,8 @@ nav {
     height: 50px;
     color: rgb(187, 129, 242);
     align-items: center;
-    position: fixed;
     width: 100%;
+    position: fixed;
 }
 
 nav ul {
@@ -120,6 +40,7 @@ nav .logo {
 }
 
 nav ul li a {
+    font-family: 'Quicksand', sans-serif;
     color: rgb(220, 209, 232);
     text-decoration: none;
 }
@@ -168,274 +89,15 @@ nav ul li a:hover {
 
 .menu-toggle input:checked~span:nth-child(2) {
     transform: rotate(45deg) translate(0, -1px);
-    background-color: red;
+}
+
+.menu-toggle input:checked~span:nth-child(4) {
+    transform: rotate(-45deg) translate(3px, -7px);
 }
 
 .menu-toggle input:checked~span:nth-child(3) {
     transform: scale(0);
 }
-
-.menu-toggle input:checked~span:nth-child(4) {
-    transform: rotate(-45deg) translate(3px, -7px);
-    background-color: red;
-}
-
-/* main */
-main {
-    background-color: transparent;
-    position: relative;
-    z-index: -100;
-}
-
-/* article */
-#contact {
-    padding-top: 40px;
-}
-
-#about,
-#projects,
-#galery,
-#contact {
-    padding-top: 80px;
-}
-
-#galery {
-    margin-bottom: 300px !important;
-}
-
-/* article */
-
-
-
-/* end main */
-
-/* article  */
-article {
-    text-align: center;
-    min-height: 400px;
-    margin-top: 50px;
-    font-size: 20px;
-    box-sizing: border-box;
-}
-
-/* end article  */
-
-/* footer */
-footer {
-    background-color: rgb(49, 49, 49);
-    padding: 50px;
-    color: white;
-}
-
-footer p {
-    font-size: 12px;
-}
-
-/* end footer */
-
-/* article */
-/* article */
-.part-section {
-    display: flex;
-    margin: 20px auto;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-section {
-    margin-left: 10px;
-}
-
-/* dropdown */
-.menu {
-    margin-top: 30px;
-}
-
-.menu ul {
-    list-style-type: none;
-    margin: 0 auto;
-    padding: 0;
-    overflow: hidden;
-    background-color: rgb(78, 85, 180);
-    width: 200px;
-    border-radius: 30px;
-}
-
-.menu li {
-    float: left;
-}
-
-.menu li a {
-    display: inline-block;
-    color: #ffffff;
-    text-align: center;
-    padding: 14px 15px;
-    text-decoration: none;
-}
-
-.menu li a:hover,
-.sub-menu:hover {
-    opacity: 0.9;
-    background-color: rgb(78, 85, 180);
-}
-
-.menu li.sub-menu {
-    display: inline-block;
-    margin-left: 50px;
-}
-
-.menu .sub-menu-konten {
-    display: none;
-    min-width: 160px;
-}
-
-.sub-menu a {
-    font-size: 16px;
-}
-
-.menu .sub-menu-konten a {
-    font-size: 12px;
-}
-
-.menu .sub-menu-konten a:hover {
-    background-color: rgb(78, 85, 180);
-}
-
-.menu .sub-menu:hover .sub-menu-konten {
-    display: block;
-}
-
-.menu .sub-menu:hover {
-    margin-left: 25px;
-
-}
-
-/* end dropdown */
-
-
-/* --------------------------------------------------- */
-
-/* galery */
-.card {
-    border-radius: 5px;
-    margin: 30px 15px;
-}
-
-img {
-    width: 200px;
-    height: 180px;
-    border-radius: 5px;
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-/* form */
-
-form {
-    padding-top: 30px;
-    padding-bottom: 100px;
-}
-
-form ul li {
-    display: flex;
-    padding: 20px;
-    justify-content: center;
-    position: relative;
-    margin-left: -40px;
-}
-
-label {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 12px;
-    font-weight: bold;
-    position: absolute;
-    top: 0;
-    left: 50;
-}
-
-/* input {
-    width: 400px;
-    padding: 7px;
-    border-radius: 5px;
-    border: 2px solid rgb(124, 124, 124);
-} */
-
-button {
-    margin-top: -10px;
-    width: 410px;
-    padding: 8px;
-    background-color: rgb(78, 85, 180);
-    border: 2px solid rgb(128, 128, 128);
-    border-radius: 5px;
-    color: white;
-}
-
-.deskripsi {
-    font-size: 14px;
-    width: 600px;
-    margin: auto;
-    margin-top: 25px !important;
-    box-sizing: border-box;
-    padding: 0 10px 0;
-    text-align: center;
-}
-
-.deskripsi h3 {
-    font-size: 12px;
-}
-
-.deskripsi p {
-    text-align: justify;
-    padding: 10px;
-}
-
-#svg {
-    width: 20px;
-    height: 20px;
-    margin: 10px;
-    padding: 2px;
-}
-
-.svg {
-    text-align: center;
-}
-
-.svg a {
-    color: transparent;
-}
-
-/* MOBILE VERSION */
-
-@media (max-width: 440px) {
-
-    /* galery */
-    .card {
-        margin: 15px;
-    }
-
-    img {
-        width: 300px;
-        height: 260px;
-    }
-
-    .deskripsi {
-        width: 100%;
-        margin: auto;
-        margin-top: 40px;
-    }
-
-    .card img {
-        width: 140px;
-        height: 130px;
-    }
-
-    .profile-api {
-        width: 90px;
-        height: 90px;
-    }
-
-}
-
 
 /* responsive breakpoint */
 
@@ -446,13 +108,12 @@ button {
     }
 }
 
-/* ukuran handphone */
+/* ukuran mobile */
 @media screen and (max-width: 576px) {
 
     .menu-toggle {
         display: flex;
     }
-
 
     nav ul {
         position: absolute;
@@ -461,20 +122,19 @@ button {
         width: 100%;
         height: 100vh;
         flex-direction: column;
-        background-color: rgb(6, 6, 7);
+        background-color: rgb(70, 77, 181);
         align-items: center;
         justify-content: space-evenly;
-        z-index: -1;
-        transform: translateY(-100%);
+        z-index: -2;
+        transform: translateX(100%);
         transition: all 1s;
     }
 
     nav ul.slide {
-        transform: translateY(0);
+        transform: translateX(0);
     }
 
     nav ul.slideBack {
-        transform: translateY(-100%);
+        transform: translateX(100%);
     }
-
 }
