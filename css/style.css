@@ -99,12 +99,133 @@ nav ul li a:hover {
     transform: scale(0);
 }
 
-/* responsive breakpoint */
+/* main */
+main {
+    padding-top: 100px;
+}
 
+section {
+    min-height: 500px;
+    box-sizing: border-box;
+    width: 73.5%;
+    margin: auto;
+    /* background-color: tomato; */
+}
+
+section .thumbnail {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+section img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1px solid snow;
+}
+
+section .name, 
+section .job-des {
+    text-align: center;
+}
+
+section h2 {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+section p {
+    text-align: left;
+}
+
+aside {
+    margin-top: -300px;
+    margin-bottom: 100px;
+}
+
+aside ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+aside ul li {
+    margin: 10px;
+}
+
+aside ul li a img {
+    border-radius: 50%;
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+}
+
+/* about */
+section#about .describe {
+    display: flex;
+    margin-top: 20px;
+}
+
+/* personal-details */
+section.personal-details {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: coral;
+}
+
+section.personal-details .list {
+    display: flex;
+}
+
+section.personal-details .list ul {
+    list-style: none;
+    margin-right: 30px;
+}
+
+section.personal-details .list ul:nth-child(1) {
+    color: rgb(36, 97, 36);
+}
+
+section.personal-details .list ul li {
+    line-height: 2em;
+    font-size: 16px;
+}
+
+section.my-interests {
+    display: flex;
+    background-color: rgb(83, 249, 0);
+}
+/* footer */
+footer {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-color: rgb(36, 36, 36);
+    color: white;
+    
+}
+
+/* responsive breakpoint */
 /* ukuran tablet */
 @media screen and (max-width: 768px) {
     nav ul {
         width: 50%;
+    }
+
+    section {
+        width: 85%;
+    }
+
+    aside ul li {
+        margin: 8px;
+    }
+
+    aside ul li a img {
+        padding: 8px;
     }
 }
 
@@ -136,5 +257,21 @@ nav ul li a:hover {
 
     nav ul.slideBack {
         transform: translateX(100%);
+    }
+
+    section {
+        width: 90%;
+    }
+
+    section h2 {
+        margin-bottom: 20px;
+    }
+
+    aside ul li {
+        margin: 5px;
+    }
+
+    aside ul li a img {
+        padding: 5px;
     }
 }
