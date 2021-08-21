@@ -106,7 +106,7 @@ nav ul li a:hover {
 
 /* main */
 section {
-    max-width: 100%;
+    max-width: 1000px;
     min-height: 500px;
     margin: auto;
     box-sizing: border-box;
@@ -250,11 +250,12 @@ footer {
     justify-content: center;
     align-items: center;
     color: rgb(209, 209, 209);
-    width: 100%;
+    width: 1000px;
     margin: auto;
 }
 
 /* responsive breakpoint */
+
 /* ukuran tablet */
 @media screen and (max-width: 768px) {
     nav ul {
@@ -296,7 +297,18 @@ footer {
         flex-direction: column;
     }
 
+    .personal-detail .list ul {
+        margin-right: 20px;
+    }
+
     section.interest {
         margin-top: -230px;
     }
+
+    section.interest .list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+    }
+
 }
