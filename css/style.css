@@ -125,7 +125,7 @@ section img {
     border: 1px solid snow;
 }
 
-section .name, 
+section .name,
 section .job-des {
     text-align: center;
 }
@@ -172,31 +172,54 @@ section.personal-details {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    background-color: coral;
+    /* background-color: coral; */
+    width: 100%;
 }
 
-section.personal-details .list {
+.list {
     display: flex;
 }
 
-section.personal-details .list ul {
+.list ul {
     list-style: none;
     margin-right: 30px;
 }
 
-section.personal-details .list ul:nth-child(1) {
+.list ul:nth-child(1) {
     color: rgb(36, 97, 36);
 }
 
-section.personal-details .list ul li {
+.list ul li {
     line-height: 2em;
     font-size: 16px;
 }
 
 section.my-interests {
     display: flex;
-    background-color: rgb(83, 249, 0);
+    flex-direction: column;
+    align-items: flex-start;
+    /* background-color: rgb(83, 249, 0); */
+    width: 100%;
 }
+
+section.my-interests ul {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    flex-wrap: wrap;
+}
+
+section.my-interests ul li {
+    margin: 0 20px 20px;
+}
+
+section.my-interests .list img {
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(221, 221, 221);
+}
+
 /* footer */
 footer {
     text-align: center;
@@ -206,7 +229,7 @@ footer {
     height: 150px;
     background-color: rgb(36, 36, 36);
     color: white;
-    
+
 }
 
 /* responsive breakpoint */
@@ -226,6 +249,35 @@ footer {
 
     aside ul li a img {
         padding: 8px;
+    }
+
+    section#about .describe {
+        flex-direction: column;
+    }
+
+    section.personal-details,
+    section.my-interests {
+        margin-bottom: -200px;
+    }
+
+    section.personal-details .list ul li {
+        font-size: 1em;
+    }
+
+    section.my-interests ul {
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+        flex-wrap: wrap;
+    }
+
+    section.my-interests ul li {
+        margin: 0 20px 20px;
+    }
+
+    section.my-interests .list img {
+        width: 50px;
+        height: 50px;
     }
 }
 
@@ -273,5 +325,37 @@ footer {
 
     aside ul li a img {
         padding: 5px;
+    }
+
+    section#about .describe {
+        flex-direction: column;
+    }
+
+    section.personal-details {
+        margin-bottom: -300px;
+    }
+    
+    section.my-interests {
+        margin-bottom: -200px;
+    }
+
+    section.personal-details .list ul li {
+        font-size: .6em;
+    }
+
+    section.my-interests ul {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    section.my-interests ul li {
+        margin: 10px 15px 15px;
+    }
+
+    section.my-interests .list img {
+        width: 40px;
+        height: 40px;
     }
 }
