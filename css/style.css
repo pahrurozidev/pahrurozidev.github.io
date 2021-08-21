@@ -296,10 +296,6 @@ footer {
         flex-direction: column;
     }
 
-    .personal-detail .list ul {
-        margin-right: 20px;
-    }
-
     section.interest {
         margin-top: -230px;
     }
