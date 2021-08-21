@@ -99,35 +99,6 @@ nav ul li a:hover {
     transform: scale(0);
 }
 
-/* main */
-section {
-    max-width: 100%;
-    min-height: 500px;
-    margin: auto;
-    box-sizing: border-box;
-}
-
-#about,
-#projects,
-#galery,
-#contact {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-/* footer */
-footer {
-    background-color: rgb(46, 46, 46);
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(245, 245, 245);
-    width: 100%;
-    margin: auto;
-}
-
 /* responsive breakpoint */
 
 /* ukuran tablet */
