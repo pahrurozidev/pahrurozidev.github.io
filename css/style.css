@@ -17,7 +17,6 @@
 body {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
 /* navbar */
@@ -107,7 +106,7 @@ nav ul li a:hover {
 
 /* main */
 section {
-    max-width: 1000px;
+    max-width: 100%;
     min-height: 500px;
     margin: auto;
     box-sizing: border-box;
@@ -251,7 +250,7 @@ footer {
     justify-content: center;
     align-items: center;
     color: rgb(209, 209, 209);
-    width: 1000px;
+    width: 100%;
     margin: auto;
 }
 
