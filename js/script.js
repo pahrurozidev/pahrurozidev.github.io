@@ -6,7 +6,6 @@ const li = ul.getElementsByTagName('li');
 menuToggle.addEventListener('click', function () {
     nav.classList.toggle('slide');
     nav.classList.replace('slideBack', 'slide');
-
 });
 
 for (list of li) {
