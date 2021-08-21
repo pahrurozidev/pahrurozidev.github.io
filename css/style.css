@@ -255,7 +255,6 @@ footer {
 }
 
 /* responsive breakpoint */
-
 /* ukuran tablet */
 @media screen and (max-width: 768px) {
     nav ul {
@@ -304,11 +303,4 @@ footer {
     section.interest {
         margin-top: -230px;
     }
-
-    section.interest .list {
-        display: flex;
-        flex-wrap: wrap;
-        width: 80%;
-    }
-
 }
