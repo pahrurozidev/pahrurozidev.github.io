@@ -17,6 +17,7 @@
 body {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 /* navbar */
@@ -174,7 +175,8 @@ h2 {
     line-height: 1.5em;
 }
 
-#about p, aside {
+#about p,
+aside {
     padding: 0 10px 20px;
 }
 
@@ -244,11 +246,13 @@ section.interest .list ul li img {
 /* footer */
 footer {
     background-color: rgb(86, 87, 87);
+    height: 150px;
     display: flex;
     justify-content: center;
-    height: 150px;
     align-items: center;
     color: rgb(209, 209, 209);
+    width: 1000px;
+    margin: auto;
 }
 
 /* responsive breakpoint */
@@ -294,8 +298,18 @@ footer {
         flex-direction: column;
     }
 
+    .personal-detail .list ul {
+        margin-right: 20px;
+    }
+
     section.interest {
         margin-top: -230px;
+    }
+
+    section.interest .list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
     }
 
 }
