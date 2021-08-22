@@ -156,8 +156,6 @@ aside ul li {
 }
 
 aside ul li a img {
-    border-radius: 50%;
-    background-color: rgb(0, 0, 0);
     padding: 10px;
 }
 
@@ -205,18 +203,18 @@ section.my-interests {
 section.my-interests ul {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 60%;
     flex-wrap: wrap;
 }
 
 section.my-interests ul li {
-    margin: 0 20px 20px;
+    margin: 0 40px 20px 0;
 }
 
 section.my-interests .list img {
     border-radius: 10px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: rgb(221, 221, 221);
 }
 
@@ -257,7 +255,7 @@ footer {
 
     section.personal-details,
     section.my-interests {
-        margin-bottom: -200px;
+        margin-bottom: -230px;
     }
 
     section.personal-details .list ul li {
@@ -267,17 +265,17 @@ footer {
     section.my-interests ul {
         display: flex;
         flex-direction: row;
-        width: 80%;
+        width: 100%;
         flex-wrap: wrap;
     }
 
     section.my-interests ul li {
-        margin: 0 20px 20px;
+        margin: 10px 20px 20px 0;
     }
 
     section.my-interests .list img {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
     }
 }
 
@@ -317,6 +315,11 @@ footer {
 
     section h2 {
         margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    section p {
+        font-size: 14px;
     }
 
     aside ul li {
@@ -332,9 +335,9 @@ footer {
     }
 
     section.personal-details {
-        margin-bottom: -300px;
+        margin-bottom: -320px;
     }
-    
+
     section.my-interests {
         margin-bottom: -200px;
     }
@@ -351,11 +354,12 @@ footer {
     }
 
     section.my-interests ul li {
-        margin: 10px 15px 15px;
+        margin: 10px 20px 30px 0;
     }
 
     section.my-interests .list img {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
     }
+
 }
