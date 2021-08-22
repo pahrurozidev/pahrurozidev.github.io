@@ -104,6 +104,13 @@ main {
     padding-top: 100px;
 }
 
+#about,
+#projects,
+#galery,
+#contact {
+    padding-top: 70px;
+}
+
 section {
     min-height: 500px;
     box-sizing: border-box;
@@ -142,7 +149,6 @@ section p {
 
 aside {
     margin-top: -300px;
-    margin-bottom: 100px;
 }
 
 aside ul {
@@ -176,6 +182,7 @@ section.personal-details {
 
 .list {
     display: flex;
+    margin-top: -10px;
 }
 
 .list ul {
@@ -198,6 +205,10 @@ section.my-interests {
     align-items: flex-start;
     /* background-color: rgb(83, 249, 0); */
     width: 100%;
+}
+
+.my-interests .list {
+    margin-top: .0em;
 }
 
 section.my-interests ul {
@@ -270,7 +281,7 @@ footer {
     }
 
     section.my-interests ul li {
-        margin: 10px 20px 20px 0;
+        margin: 10px 40px 15px 0;
     }
 
     section.my-interests .list img {
@@ -354,7 +365,7 @@ footer {
     }
 
     section.my-interests ul li {
-        margin: 10px 20px 30px 0;
+        margin: 10px 20px 0 0;
     }
 
     section.my-interests .list img {
