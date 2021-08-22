@@ -169,6 +169,7 @@ aside ul li a img {
 section#about .describe {
     display: flex;
     margin-top: 20px;
+    margin-bottom: -162px;
 }
 
 /* personal-details */
@@ -191,12 +192,20 @@ section.personal-details {
 }
 
 .list ul:nth-child(1) {
-    color: rgb(36, 97, 36);
+    color: rgb(85, 255, 156);
 }
 
 .list ul li {
     line-height: 2em;
     font-size: 16px;
+}
+
+.job {
+    width: 41%;
+    height: 18px;
+    padding: 0 8px 12px;
+    border-radius: 20px;
+    background-color: rgb(85, 255, 156);
 }
 
 section.my-interests {
@@ -262,11 +271,20 @@ footer {
 
     section#about .describe {
         flex-direction: column;
+        margin-bottom: 50px;
     }
 
     section.personal-details,
     section.my-interests {
         margin-bottom: -230px;
+    }
+
+    .job {
+        width: 41%;
+        height: 18px;
+        padding: 0 8px 12px;
+        border-radius: 20px;
+        background-color: rgb(85, 255, 156);
     }
 
     section.personal-details .list ul li {
@@ -346,11 +364,11 @@ footer {
     }
 
     section.personal-details {
-        margin-bottom: -320px;
+        margin-bottom: -335px;
     }
 
     section.my-interests {
-        margin-bottom: -200px;
+        margin-bottom: -380px;
     }
 
     section.personal-details .list ul li {
@@ -371,6 +389,14 @@ footer {
     section.my-interests .list img {
         width: 30px;
         height: 30px;
+    }
+
+    .job {
+        width: 41%;
+        height: 13px;
+        padding: 0 8px 8px;
+        border-radius: 20px;
+        background-color: rgb(85, 255, 156);
     }
 
 }

@@ -14,3 +14,9 @@ for (list of li) {
         nav.classList.toggle('slideBack');
     });
 }
+
+const personalDetails = document.querySelectorAll('.personal-details .list ul');
+
+const lastUl = personalDetails[1];
+const lastLi = lastUl.getElementsByTagName('li')[5];
+lastLi.classList.add('job');
