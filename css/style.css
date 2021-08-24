@@ -126,7 +126,7 @@ section .thumbnail {
     padding-bottom: 15px;
 }
 
-section img {
+section img.profile {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -300,6 +300,49 @@ footer {
 
 }
 
+/* projects */
+.header img {
+    height: 150px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* contact me */ 
+#contact {
+    padding-bottom: 100px;
+}
+
+#contact .container ul {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact .container ul li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#contact .container ul li input, textarea, button {
+    padding: 5px;
+    border-radius: 2px;
+}
+
+#contact .container ul li label {
+    margin-bottom: 5px;
+}
+
+#contact .container ul li textarea {
+    width: 600px;
+    height: 100px;
+}
+
+#contact .container ul li button {
+    background-color: rgb(100, 27, 216);
+}
+
+
 /* responsive breakpoint */
 /* ukuran tablet */
 @media screen and (max-width: 768px) {
@@ -360,6 +403,11 @@ footer {
     .card {
         width: 40%;
         margin-bottom: 25px;
+    }
+
+    #contact .container ul li textarea {
+        width: 430px;
+        height: 100px;
     }
 }
 
@@ -457,5 +505,10 @@ footer {
     .card {
         width: 100%;
         margin-bottom: 25px;
+    }
+
+    #contact .container ul li textarea {
+        width: 230px;
+        height: 100px;
     }
 }

@@ -55,3 +55,9 @@ setInterval(() => {
     }, 2000);
 
 }, 2000);
+
+
+const liAll = document.querySelector('#contact .container ul li');
+const li3 = liAll.nextElementSibling.nextElementSibling;
+const textarea = li3.getElementsByTagName('textarea')[0];
+textarea.setAttribute('class', 'textareaTablet');
