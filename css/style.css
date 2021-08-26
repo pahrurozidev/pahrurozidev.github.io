@@ -14,6 +14,28 @@
     padding: 0;
 }
 
+.none {
+    display: none;
+}
+
+.body-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-box .box {
+    width: 15px;
+    height: 5px;
+    background-color: rgb(255, 217, 0);
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.box.jingga {
+    background-color: rgb(100, 27, 216);
+}
+
 /* navbar */
 nav {
     display: flex;
@@ -101,8 +123,14 @@ nav ul li a:hover {
 }
 
 /* main */
-main {
+main article.header-profile {
+    background-image: url('../img/green.jpg');
     padding-top: 100px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -300px;
+    color: white;
 }
 
 #about,
@@ -193,7 +221,7 @@ section.personal-details {
 }
 
 .list ul:nth-child(1) {
-    color: rgb(85, 255, 156);
+    color: rgb(62, 168, 106);
 }
 
 .list ul li {
@@ -206,7 +234,8 @@ section.personal-details {
     height: 18px;
     padding: 0 8px 12px;
     border-radius: 20px;
-    background-color: rgb(85, 255, 156);
+    color: white;
+    background-color: rgb(33, 82, 53);
 }
 
 section.my-interests {
@@ -292,12 +321,13 @@ section.my-interests .list img {
 footer {
     text-align: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 150px;
+    font-size: 14px;
     background-color: rgb(36, 36, 36);
     color: white;
-
 }
 
 /* projects */
@@ -377,7 +407,7 @@ footer {
         height: 18px;
         padding: 0 8px 12px;
         border-radius: 20px;
-        background-color: rgb(85, 255, 156);
+        background-color: rgb(34, 99, 61);
     }
 
     section.personal-details .list ul li {
@@ -499,7 +529,7 @@ footer {
         height: 13px;
         padding: 0 8px 8px;
         border-radius: 20px;
-        background-color: rgb(85, 255, 156);
+        background-color: rgb(30, 90, 55);
     }
 
     .card {
