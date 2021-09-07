@@ -1,6 +1,11 @@
 @font-face {
-    font-family: 'viga';
-    src: url('../font/viga-regular-webfont.woff') format('woff');
+    font-family: 'Rubik-Regular';
+    src: url('../font/Rubik-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Rubik-Light';
+    src: url('../font/Rubik-Light.ttf');
 }
 
 @font-face {
@@ -12,6 +17,13 @@
     scroll-behavior: smooth;
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: 'Rubik-Regular',
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
 .none {
@@ -63,7 +75,7 @@ nav .logo {
 }
 
 nav ul li a {
-    font-family: 'viga', sans-serif;
+    font-family: 'Rubik-Regular', sans-serif;
     color: rgb(220, 209, 232);
     text-decoration: none;
 }
@@ -330,6 +342,7 @@ section.my-interests .list img {
     margin-top: 30px;
     display: flex;
 }
+
 #galery input {
     width: 100%;
     margin-bottom: 20px;
@@ -402,10 +415,21 @@ button {
 
 
 /* responsive breakpoint */
-/* ukuran tablet */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     nav ul {
         width: 50%;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    nav ul {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        width: 60%;
     }
 
     section {
@@ -466,6 +490,12 @@ button {
     #contact .container ul li textarea {
         width: 430px;
         height: 100px;
+    }
+}
+
+@media screen and (max-width: 676px) {
+    nav ul {
+        width: 70%;
     }
 }
 
