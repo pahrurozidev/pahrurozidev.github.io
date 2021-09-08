@@ -1,3 +1,12 @@
+// * job des
+new Typed('#typed', {
+    strings: ['I\'m Pahrurozi', 'I\'m Programmer', 'I\'m Student'],
+    showCursor: false,
+    loop: true,
+    typeSpeed: 100,
+    backSpeed: 100,
+});
+
 // * slidback navbar
 const menuToggle = document.querySelector('.menu-toggle input');
 const nav = document.querySelector('nav ul');
@@ -81,3 +90,4 @@ function showCards(m) {
                 </div>
             </div>`
 }
+

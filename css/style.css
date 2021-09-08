@@ -9,6 +9,11 @@
 }
 
 @font-face {
+    font-family: 'viga-regular-webfont';
+    src: url('../font/viga-regular-webfont.woff');
+}
+
+@font-face {
     font-family: 'boarding';
     src: url('../font/Boarding\ PersonalUse.ttf');
 }
@@ -75,6 +80,8 @@ nav .logo {
 }
 
 nav ul li a {
+    font-size: 14px;
+    font-weight: bold;
     font-family: 'Rubik-Regular', sans-serif;
     color: rgb(220, 209, 232);
     text-decoration: none;
@@ -137,12 +144,13 @@ nav ul li a:hover {
 /* main */
 main article.header-profile {
     background-image: url('../img/green.jpg');
-    padding-top: 100px;
-    width: 100%;
+    height: 100%;
+    padding-top: 150px;
+    background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: -300px;
-    color: white;
+    position: relative;
+    background-attachment: fixed;
 }
 
 #about,
@@ -178,8 +186,26 @@ section .job-des {
     text-align: center;
 }
 
+/* job des */
+.header-profile section h2 {
+    font-family: 'viga-regular-webfont', Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px;
+    font-size: 1.5em;
+    transition: all 2s;
+}
+
+.header-profile section h2 span#typed {
+    color: white;
+    margin-left: -25px;
+}
+
+/* end */
+
 section h2 {
-    font-size: 18px;
     text-align: center;
     margin-bottom: 30px;
 }
@@ -205,6 +231,73 @@ aside ul li {
 aside ul li a img {
     padding: 10px;
 }
+
+/* card button */
+.card-button {
+    display: flex;
+    width: 300px;
+    justify-content: space-evenly;
+    margin: auto;
+    transition: all 1s;
+}
+
+.card-button .card {
+    background-color: rgb(255, 51, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 35%;
+    height: 30px;
+    border-radius: 20px;
+    transition: all .3s;
+}
+
+.card-button .card a {
+    font-size: 12px;
+    text-decoration: none;
+    color: white;
+    padding: 10px 22px;
+}
+
+.card-button .card:hover {
+    transform: scale(1.1);
+}
+
+/* v to about */
+.header-profile .to-about {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.to-about .move {
+    background-color: rgb(255, 255, 255);
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .1s;
+}
+
+.to-about .move:hover {
+    transform: scale(1.1);
+}
+
+.move a {
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+}
+
+.move a:hover {
+    color: black;
+}
+
 
 /* about */
 section#about .describe {
@@ -242,12 +335,15 @@ section.personal-details {
 }
 
 .job {
-    width: 41%;
-    height: 18px;
-    padding: 0 8px 12px;
+    margin-top: 5px;
+    background-color: rgb(33, 82, 53);
+    width: 110px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 20px;
     color: white;
-    background-color: rgb(33, 82, 53);
 }
 
 section.my-interests {
@@ -454,14 +550,6 @@ button {
         margin-bottom: -230px;
     }
 
-    .job {
-        width: 41%;
-        height: 18px;
-        padding: 0 8px 12px;
-        border-radius: 20px;
-        background-color: rgb(34, 99, 61);
-    }
-
     section.personal-details .list ul li {
         font-size: 1em;
     }
@@ -582,13 +670,14 @@ button {
         height: 30px;
     }
 
+    /* 
     .job {
         width: 41%;
         height: 13px;
         padding: 0 8px 8px;
         border-radius: 20px;
         background-color: rgb(30, 90, 55);
-    }
+    } */
 
     .card {
         width: 100%;
