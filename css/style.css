@@ -273,7 +273,6 @@ aside ul li a img {
 }
 
 .to-about .move {
-    background-color: rgb(255, 255, 255);
     width: 25px;
     height: 25px;
     font-size: 18px;
@@ -284,20 +283,13 @@ aside ul li a img {
     transition: all .1s;
 }
 
-.to-about .move:hover {
-    transform: scale(1.1);
-}
-
 .move a {
+    background-image: url(../img/svg/chevron-down.svg);
     text-decoration: none;
-    padding: 10px;
-    color: black;
+    padding: 11px 12px;
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 50%;
 }
-
-.move a:hover {
-    color: black;
-}
-
 
 /* about */
 section#about .describe {
