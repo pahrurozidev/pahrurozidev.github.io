@@ -287,7 +287,6 @@ aside ul li a img {
     background-image: url(../img/svg/chevron-down.svg);
     text-decoration: none;
     padding: 11px 12px;
-    background-color: rgba(255, 255, 255, .1);
     border-radius: 50%;
 }
 
