@@ -3,8 +3,10 @@ new Typed('#typed', {
     strings: ['I\'m Pahrurozi', 'I\'m Web Programmer', 'I\'m Student'],
     showCursor: false,
     loop: true,
-    typeSpeed: 200,
-    backSpeed: 100,
+    typeSpeed: 30,
+    backSpeed: 90,
+    startDelay: 1000,
+    backDelay: 1000
 });
 
 // * slider
