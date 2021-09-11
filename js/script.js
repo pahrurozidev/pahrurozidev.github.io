@@ -1,11 +1,81 @@
 // * job des
 new Typed('#typed', {
-    strings: ['I\'m Pahrurozi', 'I\'m Programmer', 'I\'m Student'],
+    strings: ['I\'m Pahrurozi', 'I\'m Web Programmer', 'I\'m Student'],
     showCursor: false,
     loop: true,
-    typeSpeed: 100,
+    typeSpeed: 200,
     backSpeed: 100,
 });
+
+// * slider
+const sliderRow = document.getElementsByClassName('slide-row')[0];
+const btn = document.querySelectorAll('.indicator div.btn');
+
+setInterval(() => {
+    setTimeout(() => {
+        sliderRow.style.transform = 'translate(0px)';
+        btn[1].classList.remove('direction')
+        btn[0].classList.add('direction');
+    }, 1000);
+    setTimeout(() => {
+        sliderRow.style.transform = 'translate(-340px)';
+        btn[0].classList.remove('direction')
+        btn[1].classList.add('direction');
+    }, 5000);
+    setTimeout(() => {
+        sliderRow.style.transform = 'translate(-680px)';
+        btn[1].classList.remove('direction')
+        btn[2].classList.add('direction');
+    }, 9000);
+    setTimeout(() => {
+        sliderRow.style.transform = 'translate(-1020px)';
+        btn[2].classList.remove('direction')
+        btn[3].classList.add('direction');
+    }, 13000);
+
+
+    setTimeout(() => {
+        sliderRow.style.transform = 'translate(-680px)';
+        btn[3].classList.remove('direction')
+        btn[2].classList.add('direction');
+    }, 17000);
+    setTimeout(() => {
+        sliderRow.style.transform = 'translate(-340px)';
+        btn[2].classList.remove('direction')
+        btn[1].classList.add('direction');
+    }, 21000);
+}, 24000);
+
+btn[0].addEventListener('click', () => {
+    sliderRow.style.transform = 'translate(0px)';
+    for (let i = 0; i < 4; i++) {
+        btn[i].classList.remove('direction')
+        console.log(btn[i]);
+    }
+    btn[0].classList.add('direction');
+})
+btn[1].addEventListener('click', () => {
+    sliderRow.style.transform = 'translate(-340px)';
+    for (let i = 0; i < 4; i++) {
+        btn[i].classList.remove('direction')
+    }
+    btn[1].classList.add('direction');
+})
+btn[2].addEventListener('click', () => {
+    sliderRow.style.transform = 'translate(-680px)';
+    for (let i = 0; i < 4; i++) {
+        btn[i].classList.remove('direction')
+    }
+    btn[2].classList.add('direction');
+})
+btn[3].addEventListener('click', () => {
+    sliderRow.style.transform = 'translate(-1020px)';
+    for (let i = 0; i < 4; i++) {
+        btn[i].classList.remove('direction')
+    }
+    btn[3].classList.add('direction');
+})
+
 
 // * slidback navbar
 const menuToggle = document.querySelector('.menu-toggle input');
@@ -90,4 +160,3 @@ function showCards(m) {
                 </div>
             </div>`
 }
-

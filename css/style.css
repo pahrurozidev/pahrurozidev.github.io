@@ -154,7 +154,7 @@ main article.header-profile {
 }
 
 #about,
-#projects,
+#service,
 #galery,
 #contact {
     padding-top: 70px;
@@ -200,7 +200,7 @@ section .job-des {
 
 .header-profile section h2 span#typed {
     color: white;
-    margin-left: -25px;
+    margin-left: -20px;
 }
 
 /* end */
@@ -326,15 +326,8 @@ section.personal-details {
 }
 
 .job {
-    margin-top: 5px;
-    background-color: rgb(33, 82, 53);
-    width: 110px;
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    color: white;
+    font-weight: bolder;
+    color: rgb(62, 168, 106);
 }
 
 section.my-interests {
@@ -366,6 +359,74 @@ section.my-interests .list img {
     height: 40px;
     background-color: rgb(221, 221, 221);
 }
+
+/* service */
+.container {
+    width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slide-row {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    transition: 3s;
+}
+
+.slide-col {
+    background-color: #666;
+    margin: 0 20px;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+    transform: translate(510px);
+}
+
+.user-text {
+    color: rgb(235, 235, 235);
+}
+
+.user-text p {
+    margin-top: -15px;
+}
+
+.user-text h2 {
+    margin-top: 10px;
+}
+
+.user-img img {
+    width: 50px;
+}
+
+.hero {
+    position: relative;
+}
+
+.slider .indicator {
+    position: absolute;
+    bottom: -50px;
+}
+
+.indicator .btn {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 3px;
+    border-radius: 10px;
+    background-color: rgb(100, 27, 216);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.indicator div.direction {
+    width: 25px;
+}
+
 
 /* projects */
 .container {
@@ -502,15 +563,39 @@ button {
 
 
 /* responsive breakpoint */
+@media screen and (max-width: 1088px) {
+
+    section.my-interests ul {
+        width: 350px;
+    }
+
+}
+
 @media screen and (max-width: 1000px) {
     nav ul {
         width: 50%;
+    }
+
+    .container {
+        width: 700px;
+    }
+
+    section.my-interests ul {
+        width: 100%;
+    }
+
+    .slide-col {
+        transform: translate(680px);
     }
 }
 
 @media screen and (max-width: 840px) {
     nav ul {
         width: 60%;
+    }
+
+    section.my-interests ul {
+        width: 300px;
     }
 }
 
@@ -548,7 +633,7 @@ button {
     section.my-interests ul {
         display: flex;
         flex-direction: row;
-        width: 100%;
+        width: 350px;
         flex-wrap: wrap;
     }
 
@@ -570,6 +655,7 @@ button {
         width: 430px;
         height: 100px;
     }
+
 }
 
 @media screen and (max-width: 676px) {
@@ -638,17 +724,18 @@ button {
     }
 
     section.my-interests {
+        margin-top: 50px;
         margin-bottom: -380px;
     }
 
     section.personal-details .list ul li {
-        font-size: .6em;
+        font-size: 14px;
     }
 
     section.my-interests ul {
         display: flex;
         flex-direction: row;
-        width: 100%;
+        width: 210px;
         flex-wrap: wrap;
     }
 
@@ -661,15 +748,6 @@ button {
         height: 30px;
     }
 
-    /* 
-    .job {
-        width: 41%;
-        height: 13px;
-        padding: 0 8px 8px;
-        border-radius: 20px;
-        background-color: rgb(30, 90, 55);
-    } */
-
     .card {
         width: 100%;
         margin-bottom: 25px;
@@ -678,5 +756,22 @@ button {
     #contact .container ul li textarea {
         width: 230px;
         height: 100px;
+    }
+
+    .container {
+        width: 300px;
+    }
+
+    .slide-col {
+        transform: translate(850px);
+    }
+
+    .indicator .btn {
+        width: 10px;
+        height: 10px;
+    }
+
+    .indicator div.direction {
+        width: 20px;
     }
 }
