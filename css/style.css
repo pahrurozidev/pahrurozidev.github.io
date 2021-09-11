@@ -313,7 +313,7 @@ section.personal-details {
 
 .list ul {
     list-style: none;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 .list ul:nth-child(1) {
@@ -707,6 +707,10 @@ button {
         font-size: 14px;
     }
 
+    .req {
+        width: 80px;
+    }
+
     aside ul li {
         margin: 5px;
     }
@@ -729,7 +733,7 @@ button {
     }
 
     section.personal-details .list ul li {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     section.my-interests ul {
@@ -774,4 +778,6 @@ button {
     .indicator div.direction {
         width: 20px;
     }
+
+    
 }
