@@ -3,8 +3,8 @@ new Typed('#typed', {
     strings: ['I\'m Pahrurozi', 'I\'m Web Programmer', 'I\'m Student'],
     showCursor: false,
     loop: true,
-    typeSpeed: 30,
-    backSpeed: 90,
+    typeSpeed: 100,
+    backSpeed: 100,
     startDelay: 1000,
     backDelay: 1000
 });
