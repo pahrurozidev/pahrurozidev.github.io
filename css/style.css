@@ -155,6 +155,7 @@ main article.header-profile {
 
 #about,
 #service,
+#resume,
 #galery,
 #contact {
     padding-top: 70px;
@@ -291,6 +292,10 @@ aside ul li a img {
 }
 
 /* about */
+#about p {
+    line-height: 20px;
+}
+
 section#about .describe {
     display: flex;
     margin-top: 20px;
@@ -427,6 +432,54 @@ section.my-interests .list img {
     width: 25px;
 }
 
+/* work and education */
+.body-resume {
+    display: flex;
+}
+
+.body-resume section div.section {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.body-resume .section .tag {
+    display: flex;
+    flex-direction: column;
+}
+
+.body-resume .section .tag .circle {
+    width: 10px;
+    height: 10px;
+    background: orangered;
+    border-radius: 50%;
+    margin-left: -4px;
+}
+
+.body-resume .section .tag .row-vertical {
+    margin-top: 20px;
+    width: 3px;
+    height: 100px;
+    background:orangered;
+    border-radius: 10px;
+}
+
+.tag-text {
+    font-size: 14px;
+    margin-left: 20px;
+    padding: 0px 20px 0px 0px;
+}
+
+.tag-text .th {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    margin: 10px 0px;
+    background: orangered;
+    width: 100px;
+    height: 25px;
+}
 
 /* projects */
 .container {
@@ -546,6 +599,7 @@ textarea,
 button {
     padding: 5px;
     border-radius: 2px;
+    border: 1.8px solid rgba(0, 0, 0, .5);
 }
 
 #contact .container ul li label {
@@ -558,6 +612,7 @@ button {
 }
 
 #contact .container ul li button {
+    color: white;
     background-color: rgb(100, 27, 216);
 }
 
@@ -779,5 +834,28 @@ button {
         width: 20px;
     }
 
+    /* work & education */
+    .body-resume {
+        flex-direction: column;
+    }
+
+    .body-resume section.work {
+        margin-bottom: -48px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    /* work & education */
+    .tag-text .th {
+        width: 90px;
+        height: 20px;
+    }
     
+    .tag-text .th p {
+        font-size: 12px;
+    }
+
+    .tag-text h3{
+        font-size: 14px;
+    }
 }
