@@ -161,6 +161,14 @@ main article.header-profile {
     padding-top: 70px;
 }
 
+div.hr {
+    margin: 20px auto 45px;
+    width: 200px;
+    height: 2.4px;
+    border-radius: 3px;
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .8), rgba(0, 0, 0, 0));
+}
+
 section {
     min-height: 500px;
     box-sizing: border-box;
@@ -458,12 +466,13 @@ section.my-interests .list img {
 .body-resume .section .tag .row-vertical {
     margin-top: 20px;
     width: 3px;
-    height: 100px;
+    height: 80px;
     background:orangered;
     border-radius: 10px;
 }
 
 .tag-text {
+    margin-top: -5px;
     font-size: 14px;
     margin-left: 20px;
     padding: 0px 20px 0px 0px;
@@ -599,7 +608,7 @@ textarea,
 button {
     padding: 5px;
     border-radius: 2px;
-    border: 1.8px solid rgba(0, 0, 0, .5);
+    border: 2px solid rgba(0, 0, 0, .5);
 }
 
 #contact .container ul li label {
@@ -844,8 +853,17 @@ button {
     }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 360px) {
     /* work & education */
+
+    .body-resume .section .tag .row-vertical {
+        height: 110px;
+    }
+
+    .body-resume section.work {
+        margin-bottom: -16px;
+    }
+
     .tag-text .th {
         width: 90px;
         height: 20px;
