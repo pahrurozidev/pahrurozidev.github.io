@@ -543,6 +543,7 @@ section.my-interests .list img {
     margin: auto;
     width: 75%;
     flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 div.card-blog {
@@ -550,6 +551,7 @@ div.card-blog {
     display: flex;
     flex-direction: column-reverse;
     position: relative;
+
 }
 
 .label-blog {
@@ -690,8 +692,6 @@ footer {
     background-size: cover;
 }
 
-
-
 /* contact me */
 #contact {
     padding-bottom: 100px;
@@ -759,7 +759,6 @@ button {
 
     div.card-blog {
         width: 43%;
-        margin: 10px;
     }
 }
 
@@ -800,7 +799,7 @@ button {
 
     div.card-blog {
         width: 40%;
-        margin: 25px;
+        margin: 0px 20px 30px;
     }
 }
 
@@ -837,7 +836,7 @@ button {
 
     div.card-blog {
         width: 40%;
-        margin: 25px;
+        margin: 0px 20px 30px;
     }
 }
 
@@ -918,7 +917,7 @@ button {
 
     div.card-blog {
         width: 40%;
-        margin: 25px;
+        margin: 0px 20px 30px;
     }
 
 }
@@ -936,7 +935,7 @@ button {
 
     div.card-blog {
         width: 40%;
-        margin: 25px;
+        margin: 0px 20px 30px;
     }
 }
 
@@ -1088,7 +1087,7 @@ button {
 
     div.card-blog {
         width: 40%;
-        margin: 20px;
+        margin: 0px 20px 30px;
     }
 
     .img-blog img {
@@ -1140,6 +1139,16 @@ button {
 
     .category-body {
         width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .category {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 0px -30px;
+        width: 50%;
+        margin-bottom: 10px;
     }
 
     .container-blog {
@@ -1149,7 +1158,7 @@ button {
 
     div.card-blog {
         width: 100%;
-        /* margin: 20px; */
+        margin: 0px 20px 30px;
     }
 
     .img-blog img {
