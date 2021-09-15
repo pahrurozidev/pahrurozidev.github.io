@@ -46,7 +46,7 @@ body {
 .body-box .box {
     width: 15px;
     height: 5px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     margin: 10px;
     border-radius: 10px;
 }
@@ -160,7 +160,7 @@ main article.header-profile {
 #service,
 #resume,
 #portfolio,
-#galery,
+#blog,
 #contact {
     padding-top: 70px;
 }
@@ -512,6 +512,10 @@ section.my-interests .list img {
     transition: all 1s;
 }
 
+.img-thumbnail img {
+    border-radius: 3px;
+}
+
 .slide-img {
     transform: scale(.90);
     transition: all 3s;
@@ -531,6 +535,63 @@ section.my-interests .list img {
     transition: all 2s;
     cursor: pointer;
 }
+
+/* * BLOG & ARTICLE */
+.container-blog {
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    width: 75%;
+    flex-wrap: wrap;
+}
+
+div.card-blog {
+    width: 30%;
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+}
+
+.label-blog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: orangered;
+    padding: 5px;
+}
+
+.label-blog h4 {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.label-blog p {
+    font-size: 10px;
+}
+
+.text-blog {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.img-blog img {
+    border-radius: 3px;
+}
+
+.text-blog h4 {
+    margin: 10px 0px;
+}
+
+.img-blog {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 
 /* projects */
 .container {
@@ -690,6 +751,16 @@ button {
         width: 50%;
     }
 
+    .container-blog {
+        width: 65%;
+        justify-content: space-between;
+        
+    }
+
+    div.card-blog {
+        width: 43%;
+        margin: 10px;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -720,6 +791,17 @@ button {
     .category-body {
         width: 50%;
     }
+
+    .container-blog {
+        width: 75%;
+        justify-content: space-between;
+
+    }
+
+    div.card-blog {
+        width: 40%;
+        margin: 25px;
+    }
 }
 
 @media screen and (max-width: 840px) {
@@ -745,6 +827,17 @@ button {
 
     .category-body {
         width: 60%;
+    }
+
+    .container-blog {
+        width: 90%;
+        justify-content: space-between;
+
+    }
+
+    div.card-blog {
+        width: 40%;
+        margin: 25px;
     }
 }
 
@@ -817,11 +910,33 @@ button {
         width: 60%;
     }
 
+    .container-blog {
+        width: 85%;
+        justify-content: space-between;
+
+    }
+
+    div.card-blog {
+        width: 40%;
+        margin: 25px;
+    }
+
 }
 
 @media screen and (max-width: 676px) {
     nav ul {
         width: 70%;
+    }
+
+    .container-blog {
+        width: 95%;
+        justify-content: space-between;
+
+    }
+
+    div.card-blog {
+        width: 40%;
+        margin: 25px;
     }
 }
 
@@ -965,6 +1080,21 @@ button {
     .category-body {
         width: 60%;
     }
+
+    .container-blog {
+        width: 90%;
+        justify-content: space-between;
+    }
+
+    div.card-blog {
+        width: 40%;
+        margin: 20px;
+    }
+
+    .img-blog img {
+        width: 200px;
+        height: 120px;
+    }
 }
 
 @media screen and (max-width: 360px) {
@@ -1010,5 +1140,20 @@ button {
 
     .category-body {
         width: 100%;
+    }
+
+    .container-blog {
+        width: 100%;
+        justify-content: center;
+    }
+
+    div.card-blog {
+        width: 100%;
+        /* margin: 20px; */
+    }
+
+    .img-blog img {
+        width: 280px;
+        height: 180px;
     }
 }
