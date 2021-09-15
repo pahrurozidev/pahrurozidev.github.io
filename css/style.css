@@ -159,6 +159,7 @@ main article.header-profile {
 #about,
 #service,
 #resume,
+#portfolio,
 #galery,
 #contact {
     padding-top: 70px;
@@ -471,7 +472,7 @@ section.my-interests .list img {
     margin-top: 20px;
     width: 3px;
     height: 80px;
-    background:orangered;
+    background: orangered;
     border-radius: 10px;
 }
 
@@ -492,6 +493,43 @@ section.my-interests .list img {
     background: orangered;
     width: 100px;
     height: 25px;
+}
+
+/* portfolio */
+.portfolio-body {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    margin: auto;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.portfolio-body .img-thumbnail {
+    display: flex;
+    border: 2px solid transparent;
+    margin: 10px 5px;
+    transition: all 1s;
+}
+
+.slide-img {
+    transform: scale(.90);
+    transition: all 3s;
+}
+
+.category-body {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+    margin: 0px auto 20px;
+}
+
+.category h4 {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: all 2s;
+    cursor: pointer;
 }
 
 /* projects */
@@ -591,6 +629,8 @@ footer {
     background-size: cover;
 }
 
+
+
 /* contact me */
 #contact {
     padding-bottom: 100px;
@@ -638,6 +678,18 @@ button {
         width: 350px;
     }
 
+    .portfolio-body {
+        width: 70%;
+    }
+
+    .portfolio-body .img-thumbnail {
+        margin: 10px 5px;
+    }
+
+    .category-body {
+        width: 50%;
+    }
+
 }
 
 @media screen and (max-width: 1000px) {
@@ -656,6 +708,18 @@ button {
     .slide-col {
         transform: translate(680px);
     }
+
+    .portfolio-body {
+        width: 80%;
+    }
+
+    .portfolio-body .img-thumbnail {
+        margin: 10px -5px;
+    }
+
+    .category-body {
+        width: 50%;
+    }
 }
 
 @media screen and (max-width: 840px) {
@@ -665,6 +729,22 @@ button {
 
     section.my-interests ul {
         width: 300px;
+    }
+
+    .slide-col {
+        transform: translate(680px);
+    }
+
+    .portfolio-body {
+        width: 92%;
+    }
+
+    .portfolio-body .img-thumbnail {
+        margin: 10px 0px;
+    }
+
+    .category-body {
+        width: 60%;
     }
 }
 
@@ -723,6 +803,18 @@ button {
     #contact .container ul li textarea {
         width: 430px;
         height: 100px;
+    }
+
+    .portfolio-body {
+        width: 88%;
+    }
+
+    .portfolio-body .img-thumbnail {
+        margin: 10px 0px;
+    }
+
+    .category-body {
+        width: 60%;
     }
 
 }
@@ -856,6 +948,23 @@ button {
     .body-resume section.work {
         margin-bottom: -48px;
     }
+
+    .portfolio-body {
+        width: 85%;
+    }
+
+    .portfolio-body .img-thumbnail {
+        margin: 6px 0px;
+    }
+
+    .portfolio-body .img-thumbnail img {
+        width: 200px;
+        height: 120px;
+    }
+
+    .category-body {
+        width: 60%;
+    }
 }
 
 @media screen and (max-width: 360px) {
@@ -869,16 +978,37 @@ button {
         width: 90px;
         height: 20px;
     }
-    
+
     .tag-text .th p {
         font-size: 12px;
     }
 
-    .tag-text h3{
+    .tag-text h3 {
         font-size: 14px;
     }
 
     div.hr {
         height: 2px;
+    }
+
+    .header-profile section h2 span#typed {
+        font-size: .7em;
+    }
+
+    .portfolio-body {
+        flex-wrap: wrap;
+    }
+
+    .portfolio-body .img-thumbnail {
+        margin: 6px 0px;
+    }
+
+    .portfolio-body .img-thumbnail img {
+        width: 300px;
+        height: 200px;
+    }
+
+    .category-body {
+        width: 100%;
     }
 }

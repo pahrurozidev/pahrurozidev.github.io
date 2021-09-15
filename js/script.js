@@ -9,7 +9,99 @@ new Typed('#typed', {
     backDelay: 1000
 });
 
-// * slider
+// * portfolio | category
+const category = document.querySelectorAll('.category-body .category');
+const imgCategory = document.querySelectorAll('.img-thumbnail');
+const categoryh4 = document.querySelectorAll('.category h4');
+
+for (let i = 0; i < category.length; i++) {
+    categoryh4[0].style.background = 'orangered'
+    category[i].addEventListener('click', e => {
+        if (e.target.textContent == 'All') {
+            for (let j = 0; j < 4; j++) {
+                categoryh4[j].style.background = 'transparent';
+                categoryh4[0].style.background = 'orangered'
+                imgCategory[j].classList.remove('slide-img');
+                imgCategory[j].classList.add('slide-img');
+                setTimeout(() => {
+                    imgCategory[j].classList.remove('slide-img');
+                }, 300);
+            }
+            setTimeout(() => {
+                const img1 = imgCategory[0].querySelector('img')
+                const img2 = imgCategory[1].querySelector('img')
+                const img3 = imgCategory[2].querySelector('img')
+                const img4 = imgCategory[3].querySelector('img')
+                img1.setAttribute('src', 'img/img1.jpeg');
+                img2.setAttribute('src', 'img/img2.jpeg');
+                img3.setAttribute('src', 'img/img3.jpeg');
+                img4.setAttribute('src', 'img/img4.jpeg');
+            }, 500);
+        } else if (e.target.textContent == 'Branding') {
+            for (let j = 0; j < 4; j++) {
+                categoryh4[j].style.background = 'transparent';
+                categoryh4[1].style.background = 'orangered'
+                imgCategory[j].classList.remove('slide-img');
+                imgCategory[j].classList.add('slide-img');
+                setTimeout(() => {
+                    imgCategory[j].classList.remove('slide-img');
+                }, 300);
+            }
+            setTimeout(() => {
+                const img1 = imgCategory[0].querySelector('img')
+                const img2 = imgCategory[1].querySelector('img')
+                const img3 = imgCategory[2].querySelector('img')
+                const img4 = imgCategory[3].querySelector('img')
+                img1.setAttribute('src', 'img/img4.jpeg');
+                img2.setAttribute('src', 'img/img5.jpeg');
+                // img3.setAttribute('src', 'img/img2.jpeg');
+                img4.setAttribute('src', 'img/img3.jpeg');
+            }, 500);
+        } else if (e.target.textContent == 'Web Design') {
+            for (let j = 0; j < 4; j++) {
+                categoryh4[j].style.background = 'transparent';
+                categoryh4[2].style.background = 'orangered'
+                imgCategory[j].classList.remove('slide-img');
+                imgCategory[j].classList.add('slide-img');
+                setTimeout(() => {
+                    imgCategory[j].classList.remove('slide-img');
+                }, 300);
+            }
+            setTimeout(() => {
+                const img1 = imgCategory[0].querySelector('img')
+                const img2 = imgCategory[1].querySelector('img')
+                const img3 = imgCategory[2].querySelector('img')
+                const img4 = imgCategory[3].querySelector('img')
+                img1.setAttribute('src', 'img/img3.jpeg');
+                img2.setAttribute('src', 'img/img2.jpeg');
+                img3.setAttribute('src', 'img/img5.jpeg');
+                img4.setAttribute('src', 'img/img4.jpeg');
+            }, 500);
+        } else if (e.target.textContent == 'Photography') {
+            for (let j = 0; j < 4; j++) {
+                categoryh4[j].style.background = 'transparent';
+                categoryh4[3].style.background = 'orangered'
+                imgCategory[j].classList.remove('slide-img');
+                imgCategory[j].classList.add('slide-img');
+                setTimeout(() => {
+                    imgCategory[j].classList.remove('slide-img');
+                }, 300);
+            }
+            setTimeout(() => {
+                const img1 = imgCategory[0].querySelector('img')
+                const img2 = imgCategory[1].querySelector('img')
+                const img3 = imgCategory[2].querySelector('img')
+                const img4 = imgCategory[3].querySelector('img')
+                img1.setAttribute('src', 'img/img5.jpeg');
+                img2.setAttribute('src', 'img/img2.jpeg');
+                img3.setAttribute('src', 'img/img1.jpeg');
+                img4.setAttribute('src', 'img/img3.jpeg');
+            }, 500);
+        }
+    })
+}
+
+// * slidergetElementsByClassName
 const sliderRow = document.getElementsByClassName('slide-row')[0];
 const btn = document.querySelectorAll('.indicator div.btn');
 
@@ -134,31 +226,31 @@ setInterval(() => {
     }, 3000);
 }, 3000);
 
-// * image from api with async await
-const searchButton = document.querySelector('#search-button');
-searchButton.addEventListener('click', async function () {
-    const inputKeyword = document.querySelector('#search-input');
-    const movies = await getMovies(inputKeyword.value);
-    updateUI(movies)
-})
-// * getMovie
-function getMovies(keyword) {
-    return fetch('http://www.omdbapi.com/?apikey=487eb934&s=' + keyword)
-        .then(response => response.json())
-        .then(response => response.Search)
-}
-// * updateUI
-function updateUI(movies) {
-    let cards = '';
-    movies.forEach(m => cards += showCards(m));
-    const movieContainer = document.querySelector('#galery .container');
-    movieContainer.innerHTML = cards;
-}
-// * showCards
-function showCards(m) {
-    return `<div class="card">
-                <div class="header">
-                    <img src="` + m.Poster + `" alt="">
-                </div>
-            </div>`
-}
+// // * image from api with async await
+// const searchButton = document.querySelector('#search-button');
+// searchButton.addEventListener('click', async function () {
+//     const inputKeyword = document.querySelector('#search-input');
+//     const movies = await getMovies(inputKeyword.value);
+//     updateUI(movies)
+// })
+// // * getMovie
+// function getMovies(keyword) {
+//     return fetch('http://www.omdbapi.com/?apikey=487eb934&s=' + keyword)
+//         .then(response => response.json())
+//         .then(response => response.Search)
+// }
+// // * updateUI
+// function updateUI(movies) {
+//     let cards = '';
+//     movies.forEach(m => cards += showCards(m));
+//     const movieContainer = document.querySelector('#galery .container');
+//     movieContainer.innerHTML = cards;
+// }
+// // * showCards
+// function showCards(m) {
+//     return `<div class="card">
+//                 <div class="header">
+//                     <img src="` + m.Poster + `" alt="">
+//                 </div>
+//             </div>`
+// }

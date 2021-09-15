@@ -1,0 +1,12 @@
+[
+    {
+        "category" : "Branding",
+        "img": "img1.png"
+    }, {
+        "category": "Web Design",
+        "img" : "img2.png"
+    }, {
+        "category": "Photography",
+        "img": "img3.png"
+    }
+]
