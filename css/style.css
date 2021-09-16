@@ -714,7 +714,7 @@ button {
     background: #011627;
     padding: 5px;
     border-radius: 2px;
-    border: .2rem solid #011627;
+    border: 1px solid #011627;
 }
 
 #contact .container ul li label {
@@ -729,9 +729,15 @@ button {
 #contact .container ul li button {
     color: white;
     background-color: #011627;
+    cursor: pointer;
+}
+
+#contact .container ul li button:hover {
+    background-color: orangered;
 }
 
 #maps {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1170,5 +1176,11 @@ button {
     .img-blog img {
         width: 280px;
         height: 180px;
+    }
+
+    #contact .container ul li input,
+    textarea,
+    button {
+        border: 1px solid #011627;
     }
 }
