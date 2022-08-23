@@ -10,7 +10,7 @@ function Experiences() {
                     <div className="w-[13%]">
                         <img src={Dicoding} className="rounded" alt="Dicoding Logo" />
                     </div>
-                    <div className="w-[86%]">
+                    <div className="w-[87%]">
                         <h2 className="text-lg font-semibold">Fullstack Web Developer Student</h2>
                         <p className="text-sm">Binar Academy • Contract</p>
                         <span className="text-sm">Feb 2022 - Jul 2022 • 7 month</span>
@@ -20,7 +20,7 @@ function Experiences() {
                     <div className="w-[13%]">
                         <img src={Dicoding} className="rounded" alt="Dicoding Logo" />
                     </div>
-                    <div className="w-[86%]">
+                    <div className="w-[87%]">
                         <h2 className="text-lg font-semibold">Frontend Web and Backend Developer Student</h2>
                         <p className="text-sm">Dicoding Indonesia • Contract</p>
                         <span className="text-sm">Feb 2022 - Jul 2022 • 7 month</span>
@@ -30,7 +30,7 @@ function Experiences() {
                     <div className="w-[13%]">
                         <img src={Dicoding} className="rounded" alt="Dicoding Logo" />
                     </div>
-                    <div className="w-[86%]">
+                    <div className="w-[87%]">
                         <h2 className="text-lg font-semibold">Web Developer</h2>
                         <p className="text-sm">Citrust Sari Indonesia • Internship</p>
                         <span className="text-sm">Feb 2022 - Jul 2022 • 7 month</span>
