@@ -12,7 +12,7 @@ import Profile from '../../assets/profile.png';
 
 export default function HomeItem({ brand, tags, icons, desc, interests }) {
     return (
-        <section className="w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 m-auto font-quicksand mt-20">
+        <section className="w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 m-auto font-quicksand mt-24">
             {/* profile */}
             <img src={Profile} className="rounded-full border w-36 mt-10" alt="Pahrurozi" />
             {/* name */}
@@ -24,13 +24,13 @@ export default function HomeItem({ brand, tags, icons, desc, interests }) {
                 <li className="flex items-center gap-1"><RiCodeSSlashFill /> Frontend Developer</li>
             </ul>
             {/* describe */}
-            <p className="mt-2">{desc.name}</p>
+            <p className="mt-2 text-lg">{desc.name}</p>
             {/* interests */}
             <ul className="flex flex-wrap gap-3 text-sm mt-3">
-                <li className="border border-slate-300 rounded-lg px-2 p-1 flex items-center gap-1"><RiCodeSSlashFill />Frontend Developer</li>
-                <li className="border border-slate-300 rounded-lg px-2 p-1 flex items-center gap-1"><RiReactjsLine />React Developer</li>
-                <li className="border border-slate-300 rounded-lg px-2 p-1 flex items-center gap-1"><FaNodeJs />Node Js</li>
-                <li className="border border-slate-300 rounded-lg px-2 p-1 flex items-center gap-1"><RiChromeFill />Web Developer</li>
+                <li className="border border-slate-300 rounded-lg px-3 p-2 flex items-center gap-1"><RiCodeSSlashFill />Frontend Developer</li>
+                <li className="border border-slate-300 rounded-lg px-3 p-2 flex items-center gap-1"><RiReactjsLine />React Developer</li>
+                <li className="border border-slate-300 rounded-lg px-3 p-2 flex items-center gap-1"><FaNodeJs />Node Js</li>
+                <li className="border border-slate-300 rounded-lg px-3 p-2 flex items-center gap-1"><RiChromeFill />Web Developer</li>
             </ul>
             {/* social media */}
             <ul className="flex justify-between text-2xl w-14 mt-4">
