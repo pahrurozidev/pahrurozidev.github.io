@@ -8,7 +8,7 @@ import {
     RiLinkedinBoxFill
 } from 'react-icons/ri';
 import { FaNodeJs } from 'react-icons/fa';
-import Profile from '../../assets/profile.png';
+import Profile from '../../assets/pahrurozi.png';
 
 export default function HomeItem({ brand, tags, icons, desc, interests }) {
     return (
@@ -19,23 +19,23 @@ export default function HomeItem({ brand, tags, icons, desc, interests }) {
             <h1 className="text-3xl font-semibold mt-1">{brand.name}</h1>
             {/* tags */}
             <ul className="flex flex-wrap gap-3 text-sm">
-                <li>@pahrurozi</li>
-                <li className="flex items-center gap-1"><RiMapPinLine />Lombok</li>
-                <li className="flex items-center gap-1"><RiCodeSSlashFill /> Frontend Developer</li>
+                <li>&#64;pahrurozi</li>
+                <li className="flex items-center gap-1"><RiMapPinLine className="text-red-600" />Lombok</li>
+                <li className="flex items-center gap-1"><RiCodeSSlashFill className="text-yellow-500" /> Frontend Developer</li>
             </ul>
             {/* describe */}
             <p className="mt-2 text-lg">{desc.name}</p>
             {/* interests */}
-            <ul className="flex flex-wrap gap-3 text-sm mt-3">
-                <li className="border border-slate-300 rounded-lg px-3 p-2 flex items-center gap-1"><RiCodeSSlashFill />Frontend Developer</li>
-                <li className="border border-slate-300 rounded-lg px-3 p-2 flex items-center gap-1"><RiReactjsLine />React Developer</li>
-                <li className="border border-slate-300 rounded-lg px-3 p-2 flex items-center gap-1"><FaNodeJs />Node Js</li>
-                <li className="border border-slate-300 rounded-lg px-3 p-2 flex items-center gap-1"><RiChromeFill />Web Developer</li>
+            <ul className="flex flex-wrap gap-3 text-[16px] mt-3">
+                <li className="border border-slate-400 rounded-lg px-2 p-1 flex items-center gap-1"><RiCodeSSlashFill className="text-yellow-500" />Frontend Developer</li>
+                <li className="border border-slate-400 rounded-lg px-2 p-1 flex items-center gap-1"><RiReactjsLine className="text-blue-400" />React Developer</li>
+                <li className="border border-slate-400 rounded-lg px-2 p-1 flex items-center gap-1"><FaNodeJs className="text-green-700" />Node Js</li>
+                <li className="border border-slate-400 rounded-lg px-2 p-1 flex items-center gap-1"><RiChromeFill className="text-red-600" />Web Developer</li>
             </ul>
             {/* social media */}
             <ul className="flex justify-between text-2xl w-14 mt-4">
-                <li><a href="https://github.com/pahrurozidev"><RiGithubFill /></a></li>
-                <li><a href="https://www.linkedin.com/in/pahrurozi/"><RiLinkedinBoxFill /></a></li>
+                <li><a href="https://github.com/pahrurozidev"><RiGithubFill/></a></li>
+                <li><a href="https://www.linkedin.com/in/pahrurozi/"><RiLinkedinBoxFill className="text-blue-800" /></a></li>
             </ul>
         </section >
     );
