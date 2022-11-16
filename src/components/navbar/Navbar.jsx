@@ -1,12 +1,12 @@
 import React from "react";
-import NavItem from "./NavItem";
+import NavList from "./NavList";
 
 export default function Navbar({ navbar }) {
     return (
         <React.Fragment>
             {
                 navbar.map((nav) => (
-                    <NavItem brand={nav.brand} items={nav.items} key={null} />
+                    <NavList brand={nav.brand} items={nav.items} key={nav} />
                 ))
             }
         </React.Fragment>

@@ -1,17 +1,19 @@
 import React from "react";
 import HomeItem from "./HomeItem";
+import Profile from '../../assets/pahrurozi.webp';
 
 export default function Home({ home }) {
     return (
         <React.Fragment>
             {
-                home.map((homes) => (
+                home.map((props) => (
                     <HomeItem
-                        brand={homes.brand}
-                        tags={homes.tags}
-                        desc={homes.desc}
-                        interests={homes.interests}
-                        key={null} />
+                        brand={props.brand}
+                        tags={props.tags}
+                        desc={props.desc}
+                        interests={props.interests}
+                        profile={Profile}
+                        key={props} />
                 ))
             }
         </React.Fragment>

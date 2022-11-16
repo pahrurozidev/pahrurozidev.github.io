@@ -1,16 +1,19 @@
 {
   "name": "portfolio-react-js-x-tailwindcss",
+  "homepage": "https://pahrurozidev.github.io/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 8080",
     "build": "vite build",
-    "preview": "vite preview --port 8080"
+    "preview": "vite preview --port 8080",
+    "push": "git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-simple-code-editor": "^0.13.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
@@ -18,7 +21,10 @@
     "@vitejs/plugin-react": "^2.0.1",
     "autoprefixer": "^10.4.8",
     "postcss": "^8.4.16",
+    "prismjs": "^1.29.0",
+    "react-helmet": "^6.1.0",
     "react-icons": "^4.4.0",
+    "react-router-dom": "^6.3.0",
     "tailwindcss": "^3.1.8",
     "vite": "^3.0.7"
   }

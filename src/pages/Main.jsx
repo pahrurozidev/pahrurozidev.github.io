@@ -1,27 +1,25 @@
 import React from "react";
 import { Database } from "../utils/Database";
-import Navbar from "./navbar/Navbar";
-import Home from "./home/Home";
-import TechStuck from "./techStuck/TechStuck";
-import Experiences from "./experiences/Experiences";
-import Badges from "./badges/Badges";
-import Proyek from "./proyek/Proyek";
-import Footer from "./footer/Footer";
+import Home from "../components/home/Home";
+import TechStuck from "../components/techStuck/TechStuck";
+import Experiences from "../components/experiences/Experiences";
+import Badges from "../components/badges/Badges";
+import Proyek from "../components/proyek/Proyek";
+import Menu from "../components/menu/Menu";
 
-export default function App() {
+export default function Main() {
     const database = Database();
 
     return (
         <React.Fragment>
-            <Navbar navbar={database.navbar} />
             <main>
                 <Home home={database.home} />
                 <TechStuck techStucks={database.techStuck} />
                 <Experiences experiences={database.experiences} />
                 <Badges badges={database.badges} />
-                <Proyek />
+                <Proyek proyek={database.proyek} />
+                <Menu />
             </main>
-            <Footer footer={database.footer} />
         </React.Fragment>
     );
 }
