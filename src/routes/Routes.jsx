@@ -11,6 +11,7 @@ import UseEffect from "../components/code/useEffect/UseEffect";
 import UseContext from "../components/code/useContext/UseContext";
 import UseRef from "../components/code/useRef/UseRef";
 import UseReduce from "../components/code/useReduce/UseReduce";
+import App from "../pages/App";
 
 export default function Routes() {
     const database = Database();
@@ -27,6 +28,10 @@ export default function Routes() {
                     <Route path="/code/useContext" element={<UseContext />} />
                     <Route path="/code/useRef" element={<UseRef />} />
                     <Route path="/code/useReducer" element={<UseReduce />} />
+
+                    {/* my app */}
+                    <Route path="/app/meta-wallet" element={<App />} />
+                    <Route path="/app/meta-wallet/:slug" element={<App />} />
                 </Switch>
                 <Menu />
             </HashRouter>
