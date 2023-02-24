@@ -1,16 +1,8 @@
-import React, { Fragment } from 'react'
-import { useParams } from 'react-router-dom'
-import Detail from '../components/app/metaWallet/Detail';
-import Main from '../components/app/metaWallet/Main'
+import React from 'react'
+import Apps from '../components/app/App'
 
 export default function App() {
-
-  const { slug } = useParams();
-
-  return (
-    <Fragment>
-      {!slug && <Main />}
-      {slug && <Detail />}
-    </Fragment>
-  )
+    return (
+        <div><Apps /></div>
+    )
 }

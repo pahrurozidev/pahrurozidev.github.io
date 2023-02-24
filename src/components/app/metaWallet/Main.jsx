@@ -75,12 +75,12 @@ export default function Main() {
 
         {/* header */}
         <section class="text-center font-semibold mb-10">
-          <div class="opacity-50 text-xs">Total Balance</div>
+          <div class="opacity-50 text-sm">Total Balance</div>
           <div class="text-2xl mt-1">IDR {modifNumber(totalCount())},00</div>
 
           <div class="mt-3">
             <button
-              class="text-xs font-inter border px-4 py-1 rounded-full shadow hover:bg-sky-600 hover:text-white"
+              class="text-sm font-inter border px-4 py-1 rounded-full shadow hover:bg-sky-600 hover:text-white"
               onClick={() => setShowFormAdd(true)} ><span
                 class="opacity-50 hover:opacity-100">Add
                 Card</span></button>
@@ -96,21 +96,22 @@ export default function Main() {
 
               <div class="flex flex-col justify-between">
                 <div>
-                  <p class="opacity-50">Current Asset</p>
-                  <h1 class="text-lg text-[14px] font-semibold">IDR {modifNumber(card.count)},00</h1>
+                  <p class="opacity-50 font-bold">Current Asset</p>
+                  <h1 class="text-lg text-[14px] font-bold">IDR {modifNumber(card.count)},00</h1>
                 </div>
-                <div>
+                <div className=''>
                   <p>4937 5893 4579 8347</p>
                   <p class="opacity-50">Your Business Card</p>
                 </div>
               </div>
 
-              <div class="flex flex-col justify-between relative text-xs font-inter text-end">
+              <div class="flex flex-col justify-between relative text-sm font-bold font-inter text-end">
                 <div class="opacity-50">
                   <p class="">{card.name}</p>
                   <p class="text-[10px]">{card.place}</p>
                 </div>
-                <div class="w-2/3 absolute right-0 bottom-0"><img src={Id} class="rounded-lg" alt="" />
+                <div class="w-2/3 absolute right-0 bottom-0">
+                  <img src={Id} class="rounded-lg h-full w-full" alt="" />
                 </div>
               </div>
             </Link>))}

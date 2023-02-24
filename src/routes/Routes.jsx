@@ -30,6 +30,7 @@ export default function Routes() {
                     <Route path="/code/useReducer" element={<UseReduce />} />
 
                     {/* my app */}
+                    <Route path="/app" element={<App />} />
                     <Route path="/app/meta-wallet" element={<App />} />
                     <Route path="/app/meta-wallet/:slug" element={<App />} />
                 </Switch>

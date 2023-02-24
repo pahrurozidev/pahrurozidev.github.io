@@ -35,12 +35,16 @@ export default function Menu() {
                             <AiOutlineHome className="text-4xl bg-sky-400 rounded-full p-2" />Home</a>
                     </li>
                     <li className="mb-10">
+                        <a href="/#/app" className="flex items-center flex-row-reverse gap-3 bg-slate-900 pl-5 rounded-full shadow-lg shadow-slate-700">
+                            <CgMenuGridO className="text-4xl rounded-full p-2 bg-red-500" onClick={() => showMenu()} />App</a>
+                    </li>
+                    <li className="mb-10">
                         <a href="/#/code" className="flex items-center flex-row-reverse gap-3 bg-slate-900 pl-5 rounded-full shadow-lg shadow-slate-700">
                             <CgCodeSlash className="text-4xl rounded-full p-2 bg-yellow-300" onClick={() => showMenu()} />Code</a>
                     </li>
                 </ul>
             </div>
-            <div className="sm:hidden fixed bottom-8 right-8 z-50">
+            <div className="sm:hidden fixed bottom-8 right-8 z-50 cursor-pointer">
                 <CgMenuGridO
                     className="text-[42px] text-white bg-slate-900 rounded-full p-[5px] border border-white shadow-lg shadow-slate-600"
                     onClick={() => showMenu()} />
