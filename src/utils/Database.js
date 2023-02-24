@@ -8,7 +8,11 @@ const Database = () => {
                 items: [
                     {
                         name: "Home",
-                        link: '/'
+                        link: '#/'
+                    },
+                    {
+                        name: "App",
+                        link: '/#/app/'
                     },
                     {
                         name: "Code",

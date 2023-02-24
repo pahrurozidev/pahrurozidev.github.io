@@ -76,15 +76,15 @@ export default function Detail() {
                 {card.map((c) => (
                     <section class="text-center font-semibold mb-10">
                         <div class="mb-7"><span class="border rounded-full opacity-70 px-7 py-2 text-sm">{c.name}</span></div>
-                        <div class="opacity-50 text-xs">Total Balance</div>
+                        <div class="opacity-50 text-sm">Total Balance</div>
                         <div class="text-2xl mt-1">IDR {modifNumber(c.count)},00</div>
 
                         <div class="mt-3 flex items-center justify-center gap-2">
                             <button
-                                class="w-20 flex items-center justify-center text-xs font-inter border px-4 py-1 rounded-full shadow hover:bg-red-600 hover:text-white" onClick={() => setShowWithdrawForm(true)}><span
+                                class="w-20 flex items-center justify-center text-sm font-inter border px-4 py-1 rounded-full shadow hover:bg-red-600 hover:text-white" onClick={() => setShowWithdrawForm(true)}><span
                                     class="opacity-50 hover:opacity-100">Withdraw</span></button>
                             <button
-                                class="w-20 flex items-center justify-center text-xs font-inter border px-4 py-1 rounded-full shadow hover:bg-sky-600 hover:text-white" onClick={() => setShowTopupForm(true)}><span
+                                class="w-20 flex items-center justify-center text-sm font-inter border px-4 py-1 rounded-full shadow hover:bg-sky-600 hover:text-white" onClick={() => setShowTopupForm(true)}><span
                                     class="opacity-50 hover:opacity-100">Top Up</span></button>
                         </div>
                     </section>))}
@@ -104,7 +104,7 @@ export default function Detail() {
                                 <div class="opacity-70 text-xs">Sat 23, 2023</div>
                             </div>
                         </div>
-                        <div> <span class="font-bold">+</span> IDR 50.000,00</div>
+                        <div> <span class="font-bold text-green-500">+</span> IDR 50.000,00</div>
                     </div>
                     <div class="flex justify-between items-center shadow rounded p-2">
                         <div class="flex items-center">
@@ -114,7 +114,7 @@ export default function Detail() {
                                 <div class="opacity-70 text-xs">Sat 23, 2023</div>
                             </div>
                         </div>
-                        <div> <span class="font-bold">+</span> IDR 50.000,00</div>
+                        <div> <span class="font-bold text-red-500">-</span> IDR 50.000,00</div>
                     </div>
                     <div class="flex justify-between items-center shadow rounded p-2">
                         <div class="flex items-center">
@@ -124,7 +124,7 @@ export default function Detail() {
                                 <div class="opacity-70 text-xs">Sat 23, 2023</div>
                             </div>
                         </div>
-                        <div> <span class="font-bold">+</span> IDR 50.000,00</div>
+                        <div> <span class="font-bold text-green-500">+</span> IDR 50.000,00</div>
                     </div>
                 </section>
 
