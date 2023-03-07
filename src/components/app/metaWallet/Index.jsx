@@ -4,7 +4,7 @@ import Footer from './Footer';
 import Id from '../../../assets/Id.png'
 import { Link } from 'react-router-dom';
 
-export default function Main() {
+export default function Index() {
   const [showFormAdd, setShowFormAdd] = useState(false);
   const [cards, setCards] = useState([]);
   const [card, setcard] = useState([]);
@@ -92,26 +92,26 @@ export default function Main() {
 
           {cards.map((card) => (
             <Link to={`/app/meta-wallet/${card.name}`}
-              class="h-36 flex justify-between p-5 text-white bg-gradient-to-r from-red-400 bg-sky-700 rounded-lg cursor-pointer hover:border relative">
+              class="h-36 flex justify-between p-5 text-white bg-gradient-to-r from-orange-400 bg-sky-900 rounded-lg cursor-pointer hover:border relative">
 
               <div class="flex flex-col justify-between">
                 <div>
                   <p class="opacity-50 font-bold">Current Asset</p>
                   <h1 class="text-lg text-[14px] font-bold">IDR {modifNumber(card.count)},00</h1>
                 </div>
-                <div className=''>
+                <div className='text-sm font-mono font-semibold'>
                   <p>4937 5893 4579 8347</p>
                   <p class="opacity-50">Your Business Card</p>
                 </div>
               </div>
 
               <div class="flex flex-col justify-between relative text-sm font-bold font-inter text-end">
-                <div class="opacity-50">
-                  <p class="">{card.name}</p>
-                  <p class="text-[10px]">{card.place}</p>
+                <div class="opacity-80">
+                  <p class="text-sm">{card.name}</p>
+                  <p class="text-sm text-[12px]">{card.place}</p>
                 </div>
-                <div class="w-2/3 absolute right-0 bottom-0">
-                  <img src={Id} class="rounded-lg h-full w-full" alt="" />
+                <div class="flex justify-end">
+                  <img src={Id} class="rounded-lg w-10 h-7 shadow" alt="" />
                 </div>
               </div>
             </Link>))}
@@ -119,10 +119,10 @@ export default function Main() {
 
         {/* add card form */}
         <section
-          class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-700 opacity-90 ${showFormAdd ? 'flex' : 'hidden'} items-center font-inter text-sm text-white`}>
+          class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-900 opacity-90 ${showFormAdd ? 'flex' : 'hidden'} items-center font-inter text-sm text-white`}>
           <form action=""
             onSubmit={(event) => onSubmitHandler(event)}
-            class="bg-gradient-to-tr from-yellow-500 bg-sky-900 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl shadow-slate-100">
+            class="bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl">
             {/* <!-- form header --> */}
             <div>
               <h1 class="text-bold text-2xl mb-3">Insert Your <span class="underline">Wallet</span> Here!</h1>
