@@ -11,8 +11,14 @@ export default function Index() {
   const [formValue, setFormValue] = useState({
     name: '',
     place: '',
+    color1: '',
+    color2: '',
     count: 0,
   });
+  const [colors, setColors] = useState({
+    color1: '',
+    color2: '',
+  })
 
   const modifNumber = (number) => {
     return number
@@ -28,6 +34,8 @@ export default function Index() {
 
     setFormValue({
       name: inputForm.name,
+      color1: "#654e4e",
+      color2: "#877373",
       place: inputForm.place.toUpperCase(),
       count: 0,
     })
@@ -55,8 +63,7 @@ export default function Index() {
     if (items) {
       setCards(items);
     }
-
-  }, [card]);
+  }, []);
 
   const totalCount = () => {
     let total = 0;
@@ -89,11 +96,10 @@ export default function Index() {
 
         {/* card */}
         <section class="grid sm:grid-cols-2 gap-4 text-xs">
-
           {cards.map((card) => (
             <Link to={`/app/meta-wallet/${card.name}`}
-              class="h-36 flex justify-between p-5 text-white bg-gradient-to-r from-orange-400 bg-sky-900 rounded-lg cursor-pointer hover:border relative">
-
+              className={`h-36 flex justify-between p-5 text-white rounded-lg cursor-pointer hover:border relative`} 
+              style={{backgroundImage: `linear-gradient(to right, ${card.color1}, ${card.color2})`}}>
               <div class="flex flex-col justify-between">
                 <div>
                   <p class="opacity-50 font-bold">Current Asset</p>
@@ -130,12 +136,12 @@ export default function Index() {
             {/* <!-- wallet name --> */}
             <div class="flex flex-col gap-1">
               <label for="name">Wallet Name</label>
-              <input type="text" id="name" class="px-2 border h-9 rounded-full text-black" value={formValue.name} placeholder='Wallet Name' required onChange={(event) => getValue(event)} />
+              <input type="text" id="name" class="px-2 border h-9 rounded-lg text-black" value={formValue.name} placeholder='Wallet Name' required onChange={(event) => getValue(event)} />
             </div>
             {/* <!-- wallet place --> */}
             <div class="flex flex-col gap-1">
               <label for="place">Place Name</label>
-              <select name="place" id="place" class="px-1 border h-9 rounded-full text-black text-opacity-60" required onChange={(event) => getValue(event)}>
+              <select name="place" id="place" class="px-1 border h-9 rounded-lg text-black text-opacity-60" required onChange={(event) => getValue(event)}>
                 <option selected>Select Place Wallet</option>
                 <option value="cash">CASH</option>
                 <option value="bri">BRI</option>
@@ -151,12 +157,12 @@ export default function Index() {
             {/* <!-- button --> */}
             <div class="ml-auto flex gap-2 mt-2">
               <div
-                class="border rounded-full w-20 shadow cursor-pointer h-9 flex items-center justify-center bg-red-600 hover:bg-red-600" onClick={() => setShowFormAdd(false)}>
+                class="border rounded-lg w-20 shadow cursor-pointer h-9 flex items-center justify-center hover:bg-red-600" onClick={() => setShowFormAdd(false)}>
                 <span>Cancel</span>
               </div>
               <button
                 type='submit'
-                class="border rounded-full w-20 shadow cursor-pointer h-9 flex items-center justify-center bg-blue-600">
+                class="border rounded-lg w-20 shadow cursor-pointer h-9 flex items-center justify-center hover:bg-blue-600">
                 <span>Save</span>
               </button>
             </div>

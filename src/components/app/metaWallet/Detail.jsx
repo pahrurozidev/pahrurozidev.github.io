@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import Header from './Header'
 import User from '../../../assets/user.png'
 import { useNavigate, useParams } from 'react-router-dom';
-import {BsGear} from 'react-icons/bs';
+import {BsGear, BsPen} from 'react-icons/bs';
 import {GrFormClose} from 'react-icons/gr';
 
 export default function Detail() {
@@ -20,6 +20,11 @@ export default function Detail() {
         place: '',
         count: 0,
     }]);
+    const [colors, setColors] = useState({
+        name: '', 
+        color1: '',
+        color2: '',
+    })
     const [item, setItem] = useState([]);
 
     useEffect(() => {
@@ -27,11 +32,40 @@ export default function Detail() {
         const items = JSON.parse(localStorage.getItem('Database'));
 
         const c = items.filter((c) => c.name == slug);
-        setCard(c)
+        setCard(c);
 
         setItem(items);
 
     }, [])
+
+    const getColorHandler = (event) => {
+        const inputForm = { ...colors };
+        inputForm[event.target.name] = event.target.value;
+
+        setColors({
+            name: card[0].name,
+            place: card[0].place,
+            color1: inputForm.color1,
+            color2: inputForm.color2,
+            count: card[0].count,
+        })
+    }
+
+    const saveColorHandler = () => {
+        localStorage.setItem('Colors', JSON.stringify(card));
+
+        const items = JSON.parse(localStorage.getItem('Database'));
+
+        const item = items.filter((c) => c.name !== slug);
+
+        item.push(colors);
+
+        localStorage.setItem('Database', JSON.stringify(item));
+
+        setShowSettingOption(false)
+
+        navigate(`/app/meta-wallet`);
+    }
 
     const modifNumber = (number) => {
         return number
@@ -41,6 +75,23 @@ export default function Detail() {
             );
     }
 
+    const onSaveEditedHandler = () => {
+        
+        const wallet = item.filter((i) => i.name == slug);
+        const walletInstead = item.filter((i) => i.name !== slug);
+
+        wallet[0].name = cards.name;
+        wallet[0].place = cards.place;
+
+        wallet.forEach((w) => {
+            walletInstead.push(w);
+        })
+
+        localStorage.setItem('Database', JSON.stringify(walletInstead));
+
+        navigate(`/app/meta-wallet`);
+    }
+
     const getValue = (event) => {
         const inputForm = { ...cards };
         inputForm[event.target.id] = event.target.value;
@@ -48,7 +99,19 @@ export default function Detail() {
         setValue(inputForm.count)
     }
 
+    const editGetValue = (event) => {
+        const inputForm = { ...cards };
+        inputForm[event.target.name] = event.target.value;
+
+        setCards({
+            name: inputForm.name,
+            place: inputForm.place,
+        })
+    }
+
     const deleteWalletHandler = () => {
+
+        alert('Are you sure?')
 
         const wallet = item.filter((i) => i.name !== slug);
 
@@ -160,18 +223,18 @@ export default function Detail() {
                         {/* <!-- wallet count --> */}
                         <div class="flex flex-col gap-1">
                             <label for="count">Wallet Count</label>
-                            <input type="number" id="count" class="px-2 border h-9 rounded-full text-black"
+                            <input type="number" id="count" class="px-2 border h-9 rounded-lg text-black"
                                 placeholder="Wallet Count" onChange={(event) => getValue(event)} required />
                         </div>
                         {/* <!-- button --> */}
                         <div class="ml-auto flex gap-2 mt-2">
                             <div
-                                class="border rounded-full w-20 shadow cursor-pointer h-9 flex items-center justify-center bg-red-600 hover:bg-red-600" onClick={() => setShowWithdrawForm(false)}>
+                                class="border rounded-lg w-20 shadow cursor-pointer h-9 flex items-center justify-center hover:bg-red-600" onClick={() => setShowWithdrawForm(false)}>
                                 <span>Cancel</span>
                             </div>
                             <button
                                 type='submit'
-                                class="border rounded-full w-20 shadow cursor-pointer h-9 flex items-center justify-center bg-blue-600">
+                                class="border rounded-lg w-20 shadow cursor-pointer h-9 flex items-center justify-center hover:bg-blue-600">
                                 <span>Withdraw</span>
                             </button>
                         </div>
@@ -191,18 +254,18 @@ export default function Detail() {
                         {/* <!-- wallet count --> */}
                         <div class="flex flex-col gap-1">
                             <label for="count">Wallet Count</label>
-                            <input type="number" id="count" class="px-2 border h-9 rounded-full text-black"
+                            <input type="number" id="count" class="px-2 border h-9 rounded-lg text-black"
                                 placeholder="Wallet Count" onChange={(event) => getValue(event)} required />
                         </div>
                         {/* <!-- button --> */}
                         <div class="ml-auto flex gap-2 mt-2">
                             <div
-                                class="border rounded-full w-20 shadow cursor-pointer h-9 flex items-center justify-center bg-red-600 hover:bg-red-600" onClick={() => setShowTopupForm(false)}>
+                                class="border rounded-lg w-20 shadow cursor-pointer h-9 flex items-center justify-center hover:bg-red-600" onClick={() => setShowTopupForm(false)}>
                                 <span>Cancel</span>
                             </div>
                             <button
                                 type='submit'
-                                class="border rounded-full w-20 shadow cursor-pointer h-9 flex items-center justify-center bg-blue-600">
+                                class="border rounded-lg w-20 shadow cursor-pointer h-9 flex items-center justify-center hover:bg-blue-600">
                                 <span>Top Up</span>
                             </button>
                         </div>
@@ -216,22 +279,49 @@ export default function Detail() {
 
                         <GrFormClose 
                             className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
-                            onClick={() => setShowSettingOption(false)}/>
+                            onClick={() => {
+                                setColors(card)
 
-                        <div className='flex flex-col gap-8 mt-3'>
+                                setShowSettingOption(false)
+                            }}/>
+
+                        <div className='flex flex-col gap-4 mt-3'>
+                            {/* name */}
+                            <div className='flex items-center gap-1'>
+                                {card.map((c) => (<div className='text-sm font-semibold'>{c.name}</div>))}
+                                <BsPen className='cursor-pointer hover:text-blue-300'
+                                    onClick={() => {
+                                        setShowEditForm(true) 
+                                        setShowSettingOption(false)
+
+                                        // start value
+                                        setCards({
+                                            name: card[0].name,
+                                            place: card[0].place,
+                                        })
+
+                                    }}/>
+                            </div>
+
+                            {/* gradient color */}
                             <div>
                                 <div className='text-sm font-semibold'>Gradient Color</div>
-                                <div className='flex justify-between gap-4 mt-3'>
-                                    <input type="color" className='w-full rounded-lg cursor-pointer'/>
-                                    <input type="color" className='w-full rounded-lg cursor-pointer'/>
+                                <div className='flex justify-between gap-4 mt-2'>
+                                    <input type="color" name='color1' value={card.map((c) => c.color1)} className='w-full bg-slate-500 h-9 rounded-lg cursor-pointer' onChange={(event) => getColorHandler(event)}/>
+                                    <input type="color" name='color2' value={card.map((c) => c.color2)} onChange={(event) => getColorHandler(event)} className='w-full bg-slate-500 h-9 rounded-lg cursor-pointer'/>
                                 </div>
                             </div>
+                            {/* Pin */}
+                            <div className='flex flex-col gap-1 text-sm font-semibold'>
+                                <div className='flex gap-1 items-center'>
+                                    <div>Pin</div>
+                                    <BsPen className='cursor-pointer hover:text-blue-300'/>
+                                </div>
+                                <div className='font-mono'>* * * * * *</div>
+                            </div>
                             <div className='flex justify-between text-center gap-4'>
-                                <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500' 
-                                onClick={() => {
-                                    setShowEditForm(true) 
-                                    setShowSettingOption(false)
-                                }}>Edit</div>
+                                <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500'
+                                onClick={() => saveColorHandler()}>Save</div>
                                 <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-red-500'
                                 onClick={() => deleteWalletHandler()}>Delete</div>
                             </div>
@@ -251,17 +341,22 @@ export default function Detail() {
                         <div className='flex flex-col gap-4 mt-3'>
                             <div class="flex flex-col gap-1">
                                 <label for="count">Wallet Name</label>
-                                <input type="text" class="px-2 border h-9 rounded-lg text-black"
-                                    placeholder="Wallet Count" onChange={(event) => getValue(event)} required />
+                                <input type="text" id='name' name='name' class="px-2 border h-9 rounded-lg text-black" placeholder="Wallet Count"
+                                value={cards.name}
+                                required 
+                                onChange={(event) => editGetValue(event)} />
                             </div>
                             <div class="flex flex-col gap-1">
                                 <label for="count">Wallet Place</label>
-                                <select name="place" id="place" class="px-1 border h-9 rounded-lg text-black text-opacity-60" required onChange={(event) => getValue(event)}>
+                                <select name="place" id="place" class="px-1 border h-9 rounded-lg text-black text-opacity-60"
+                                value={cards.place}
+                                onChange={(event) => editGetValue(event)}
+                                required>
                                     <option selected>Select Place Wallet</option>
                                     <option value="cash">CASH</option>
                                     <option value="bri">BRI</option>
-                                    <option value="atm">BNI</option>
-                                    <option value="atm">BCA</option>
+                                    <option value="bni">BNI</option>
+                                    <option value="bca">BCA</option>
                                     <option value="crypto">CRYPTO</option>
                                     <option value="dana">DANA</option>
                                     <option value="gopay">GOPAY</option>
@@ -270,7 +365,8 @@ export default function Detail() {
                                 </select>
                             </div>
                             <div className='flex justify-between text-center gap-4 mt-3'>
-                                <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500'>Save</div>
+                                <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500' 
+                                onClick={() => onSaveEditedHandler()}>Save</div>
                             </div>
                         </div>
                     </div>
