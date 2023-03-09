@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Id from '../../../assets/Id.png'
 import { Link } from 'react-router-dom';
+import {GrFormClose} from 'react-icons/gr';
 
 export default function Index() {
   const [showFormAdd, setShowFormAdd] = useState(false);
@@ -15,17 +16,28 @@ export default function Index() {
     color2: '',
     count: 0,
   });
-  const [colors, setColors] = useState({
-    color1: '',
-    color2: '',
-  })
+  const [showPinForm, setShowPinForm] = useState(false);
+  const [pinValue, setPinValue] = useState('');
 
+  // modify number
   const modifNumber = (number) => {
     return number
       .toString()
       .replace(
         /\B(?=(\d{3})+(?!\d))/g, "."
       );
+  }
+
+  const getPinValueHandler = (event) => {
+    const pin = event.target.value;
+    setPinValue(pin);
+  }
+
+  const onSubmitSetupPin = () => {
+    // set pin ls
+    localStorage.setItem('Pin', JSON.stringify({key: pinValue}));
+    setShowPinForm(false);
+    alert('Pin successful to setup!')
   }
 
   const getValue = (event) => {
@@ -39,10 +51,30 @@ export default function Index() {
       place: inputForm.place.toUpperCase(),
       count: 0,
     })
-
   }
 
   const onSubmitHandler = (event) => {
+    event.preventDefault();
+
+    const pin = JSON.parse(localStorage.getItem('Pin'));
+
+    if (!pin) {
+        alert('Setup before your PIN!')
+
+        setShowPinForm(true);
+        setShowFormAdd(false);
+  
+        return false;
+    }
+
+    const result = cards.filter((card) => card.name == formValue.name);
+
+    if (result.length > 0) {
+        alert('Wallet name have ready!')
+        setShowFormAdd(false);
+        return false;
+    }
+
     cards.push(formValue)
 
     // set DB
@@ -58,6 +90,7 @@ export default function Index() {
   }
 
   useEffect(() => {
+
     // get DB
     const items = JSON.parse(localStorage.getItem('Database'));
     if (items) {
@@ -89,8 +122,7 @@ export default function Index() {
             <button
               class="text-sm font-inter border px-4 py-1 rounded-full shadow hover:bg-sky-600 hover:text-white"
               onClick={() => setShowFormAdd(true)} ><span
-                class="opacity-50 hover:opacity-100">Add
-                Card</span></button>
+                class="opacity-50 hover:opacity-100">Add Card</span></button>
           </div>
         </section>
 
@@ -167,6 +199,31 @@ export default function Index() {
               </button>
             </div>
           </form>
+        </section>
+
+        {/* setting pin */}
+        <section class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-900 opacity-90 items-center font-inter text-sm text-white ${showPinForm ? 'flex' : 'hidden'}`}>
+          <div class={`bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl relative`}>
+              <h1 className='text-2xl'>Setting <span className='font-bold underline'>PIN Here!</span></h1>
+
+              <GrFormClose 
+                  className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
+                  onClick={() => setShowPinForm(false)}/>
+
+              <div className='flex flex-col gap-4 mt-3'>
+                  <div class="flex flex-col gap-1">
+                      <label for="count">Enter Your Pin!</label>
+                      <input type="number" id='pin' name='pin' class="px-2 border h-9 rounded-lg text-black" placeholder="Your Pin"
+                    //   value={cards.name}
+                      required 
+                      onChange={(event) => getPinValueHandler(event)} />
+                  </div>
+                  <div className='flex justify-between text-center gap-4 mt-3'>
+                      <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500' 
+                      onClick={() => onSubmitSetupPin()}>Save</div>
+                  </div>
+              </div>
+          </div>
         </section>
       </main>
       {/* <Footer /> */}
