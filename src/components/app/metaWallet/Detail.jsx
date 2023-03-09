@@ -21,17 +21,24 @@ export default function Detail() {
         count: 0,
     }]);
     const [colors, setColors] = useState({
-        name: '', 
         color1: '',
         color2: '',
     })
     const [item, setItem] = useState([]);
+    const [showPinForm, setShowPinForm] = useState(false);
+    const [pinVerify, setPinVerify] = useState('');
 
     useEffect(() => {
         // get DB
         const items = JSON.parse(localStorage.getItem('Database'));
 
+        
         const c = items.filter((c) => c.name == slug);
+
+        c.forEach((i) => {
+            setColors(i)
+        })
+
         setCard(c);
 
         setItem(items);
@@ -52,8 +59,6 @@ export default function Detail() {
     }
 
     const saveColorHandler = () => {
-        localStorage.setItem('Colors', JSON.stringify(card));
-
         const items = JSON.parse(localStorage.getItem('Database'));
 
         const item = items.filter((c) => c.name !== slug);
@@ -122,11 +127,11 @@ export default function Detail() {
 
     const topupHandler = (event) => {
         const c = item.filter((c) => c.name == slug);
-
+        
         c[0].count = c[0].count + parseInt(value);
-
+        
         localStorage.setItem('Database', JSON.stringify(item));
-
+        
         setShowTopupForm(false);
     }
 
@@ -141,6 +146,25 @@ export default function Detail() {
         }
 
         setShowWithdrawForm(false)
+    }
+
+    const enterPinHandler = (event) => {
+        const userPin = event.target.value;
+        setPinVerify(userPin);
+    }
+
+    const onSubmitSetupPin = () => {
+        const pin = JSON.parse(localStorage.getItem('Pin'));
+
+        if (pin.key === pinVerify) {
+            setShowPinForm(false);
+            return true;
+        } else {
+            alert('Your Pin is faild!')
+            setShowPinForm(false);
+            setShowTopupForm(false);
+            return false;
+        }
     }
 
     return (
@@ -245,7 +269,9 @@ export default function Detail() {
                 <section
                     class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-900 opacity-90 ${showTopupForm ? 'flex' : 'hidden'} items-center font-inter text-sm text-white`}>
                     <form action=""
-                        onSubmit={(event) => topupHandler(event)}
+                        onSubmit={(event) => {
+                            setShowPinForm(true)
+                        }}
                         class="bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl">
                         {/* <!-- form header --> */}
                         <div>
@@ -280,8 +306,6 @@ export default function Detail() {
                         <GrFormClose 
                             className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
                             onClick={() => {
-                                setColors(card)
-
                                 setShowSettingOption(false)
                             }}/>
 
@@ -307,8 +331,10 @@ export default function Detail() {
                             <div>
                                 <div className='text-sm font-semibold'>Gradient Color</div>
                                 <div className='flex justify-between gap-4 mt-2'>
-                                    <input type="color" name='color1' value={card.map((c) => c.color1)} className='w-full bg-slate-500 h-9 rounded-lg cursor-pointer' onChange={(event) => getColorHandler(event)}/>
-                                    <input type="color" name='color2' value={card.map((c) => c.color2)} onChange={(event) => getColorHandler(event)} className='w-full bg-slate-500 h-9 rounded-lg cursor-pointer'/>
+                                    {/* color 1 */}
+                                    <input type="color" name='color1' value={colors.color1} className='w-full bg-slate-500 h-9 rounded-lg cursor-pointer' onChange={(event) => getColorHandler(event)}/>
+                                    {/* color 2 */}
+                                    <input type="color" name='color2' value={colors.color2} onChange={(event) => getColorHandler(event)} className='w-full bg-slate-500 h-9 rounded-lg cursor-pointer'/>
                                 </div>
                             </div>
                             {/* Pin */}
@@ -349,10 +375,9 @@ export default function Detail() {
                             <div class="flex flex-col gap-1">
                                 <label for="count">Wallet Place</label>
                                 <select name="place" id="place" class="px-1 border h-9 rounded-lg text-black text-opacity-60"
-                                value={cards.place}
                                 onChange={(event) => editGetValue(event)}
+                                value={cards.place}
                                 required>
-                                    <option selected>Select Place Wallet</option>
                                     <option value="cash">CASH</option>
                                     <option value="bri">BRI</option>
                                     <option value="bni">BNI</option>
@@ -370,6 +395,33 @@ export default function Detail() {
                             </div>
                         </div>
                     </div>
+                </section>
+
+                {/* setting pin */}
+                <section class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-900 opacity-90 items-center font-inter text-sm text-white ${showPinForm ? 'flex' : 'hidden'}`}>
+                <div class={`bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl relative`}>
+                    <h1 className='text-2xl'>Setting <span className='font-bold underline'>PIN Here!</span></h1>
+
+                    <GrFormClose 
+                        className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
+                        onClick={() => setShowPinForm(false)}/>
+
+                    <div className='flex flex-col gap-4 mt-3'>
+                        <div class="flex flex-col gap-1">
+                            <label for="count">Enter Your Pin!</label>
+                            <input type="number" id='pin' name='pin' class="px-2 border h-9 rounded-lg text-black" placeholder="Your Pin"
+                            //   value={cards.name}
+                            required 
+                            onChange={(event) => enterPinHandler(event)} />
+                        </div>
+                        <div className='flex justify-between text-center gap-4 mt-3'>
+                            <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500' 
+                            onClick={(event) => {
+                                onSubmitSetupPin() && topupHandler(event)
+                                }}>Send</div>
+                        </div>
+                    </div>
+                </div>
                 </section>
             </main>
 
