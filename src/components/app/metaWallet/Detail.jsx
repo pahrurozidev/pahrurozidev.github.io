@@ -4,6 +4,8 @@ import User from '../../../assets/user.png'
 import { useNavigate, useParams } from 'react-router-dom';
 import {BsGear, BsPen} from 'react-icons/bs';
 import {GrFormClose} from 'react-icons/gr';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Detail() {
 
@@ -27,6 +29,7 @@ export default function Detail() {
     const [item, setItem] = useState([]);
     const [showPinForm, setShowPinForm] = useState(false);
     const [pinVerify, setPinVerify] = useState('');
+    const [action, setAction] = useState('');
 
     useEffect(() => {
         // get DB
@@ -59,6 +62,7 @@ export default function Detail() {
     }
 
     const saveColorHandler = () => {
+
         const items = JSON.parse(localStorage.getItem('Database'));
 
         const item = items.filter((c) => c.name !== slug);
@@ -69,7 +73,7 @@ export default function Detail() {
 
         setShowSettingOption(false)
 
-        navigate(`/app/meta-wallet`);
+        navigate(`/app/meta-wallet?setting`);
     }
 
     const modifNumber = (number) => {
@@ -116,16 +120,18 @@ export default function Detail() {
 
     const deleteWalletHandler = () => {
 
-        alert('Are you sure?')
-
         const wallet = item.filter((i) => i.name !== slug);
 
         localStorage.setItem('Database', JSON.stringify(wallet));
 
-        navigate('/app/meta-wallet');
+        walletDeleteNotify();
+
+        navigate('/app/meta-wallet?delete');
     }
 
-    const topupHandler = (event) => {
+    const topupHandler = () => {
+        topupSuccessHandler();
+
         const c = item.filter((c) => c.name == slug);
         
         c[0].count = c[0].count + parseInt(value);
@@ -135,7 +141,8 @@ export default function Detail() {
         setShowTopupForm(false);
     }
 
-    const withdrawHandler = (event) => {
+    const withdrawHandler = () => {
+        withdrawSuccessHandler()
         const c = item.filter((c) => c.name == slug);
 
         if (parseInt(value) > c[0].count) {
@@ -160,17 +167,54 @@ export default function Detail() {
             setShowPinForm(false);
             return true;
         } else {
-            alert('Your Pin is faild!')
-            setShowPinForm(false);
+            pinFaildHandler()
+            // setShowPinForm(false);
             setShowTopupForm(false);
+            setShowWithdrawForm(false)
             return false;
         }
     }
+
+    const pinFaildHandler = () => toast.warning('Your Pin faild!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+    const topupSuccessHandler = () => toast.success('Top Up Successfull!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+    const withdrawSuccessHandler = () => toast.success('Withdraw Successfull!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
 
     return (
         <Fragment>
             <Header />
             <main class="w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 m-auto my-[105px] font-inter border-slate-900 border-opacity-20">
+
+                {/* notification alert */}
+                <ToastContainer />
 
                 {/* setting */}
                 <div className='flex justify-end -mt-5'>
@@ -238,7 +282,11 @@ export default function Detail() {
                 {/* withdraw form */}
                 <section class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-900 opacity-90 ${showWithdrawForm ? 'flex' : 'hidden'} items-center font-inter text-sm text-white`}>
                     <form action=""
-                        onSubmit={() => withdrawHandler()}
+                        onSubmit={(event) => {
+                            event.preventDefault();
+                            setAction('withdraw');
+                            setShowPinForm(true);
+                        }}
                         class="bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl">
                         {/* <!-- form header --> */}
                         <div>
@@ -270,6 +318,8 @@ export default function Detail() {
                     class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-900 opacity-90 ${showTopupForm ? 'flex' : 'hidden'} items-center font-inter text-sm text-white`}>
                     <form action=""
                         onSubmit={(event) => {
+                            event.preventDefault();
+                            setAction('topup');
                             setShowPinForm(true)
                         }}
                         class="bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl">
@@ -349,7 +399,11 @@ export default function Detail() {
                                 <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500'
                                 onClick={() => saveColorHandler()}>Save</div>
                                 <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-red-500'
-                                onClick={() => deleteWalletHandler()}>Delete</div>
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    setAction('delete');
+                                    setShowPinForm(true);
+                                }}>Delete</div>
                             </div>
                         </div>
                     </div>
@@ -374,19 +428,22 @@ export default function Detail() {
                             </div>
                             <div class="flex flex-col gap-1">
                                 <label for="count">Wallet Place</label>
-                                <select name="place" id="place" class="px-1 border h-9 rounded-lg text-black text-opacity-60"
-                                onChange={(event) => editGetValue(event)}
-                                value={cards.place}
-                                required>
-                                    <option value="cash">CASH</option>
-                                    <option value="bri">BRI</option>
-                                    <option value="bni">BNI</option>
-                                    <option value="bca">BCA</option>
-                                    <option value="crypto">CRYPTO</option>
-                                    <option value="dana">DANA</option>
-                                    <option value="gopay">GOPAY</option>
-                                    <option value="linkaja">LINK AJA</option>
-                                    <option value="opo">OPO</option>
+                                <select 
+                                    name="place" 
+                                    id="place" 
+                                    class="px-1 border h-9 rounded-lg text-black text-opacity-60"
+                                    onChange={(event) => editGetValue(event)}
+                                    value={cards.place}
+                                    required>
+                                        <option value="cash">CASH</option>
+                                        <option value="bri">BRI</option>
+                                        <option value="bni">BNI</option>
+                                        <option value="bca">BCA</option>
+                                        <option value="crypto">CRYPTO</option>
+                                        <option value="dana">DANA</option>
+                                        <option value="gopay">GOPAY</option>
+                                        <option value="linkaja">LINK AJA</option>
+                                        <option value="opo">OPO</option>
                                 </select>
                             </div>
                             <div className='flex justify-between text-center gap-4 mt-3'>
@@ -397,10 +454,10 @@ export default function Detail() {
                     </div>
                 </section>
 
-                {/* setting pin */}
+                {/* Enter pin */}
                 <section class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-900 opacity-90 items-center font-inter text-sm text-white ${showPinForm ? 'flex' : 'hidden'}`}>
                 <div class={`bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl relative`}>
-                    <h1 className='text-2xl'>Setting <span className='font-bold underline'>PIN Here!</span></h1>
+                    <h1 className='text-2xl'>Enter your <span className='font-bold underline'>PIN Here!</span></h1>
 
                     <GrFormClose 
                         className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
@@ -417,7 +474,15 @@ export default function Detail() {
                         <div className='flex justify-between text-center gap-4 mt-3'>
                             <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500' 
                             onClick={(event) => {
-                                onSubmitSetupPin() && topupHandler(event)
+                                if(onSubmitSetupPin()) {
+                                  if (action == 'topup') {
+                                    topupHandler();
+                                  } else if (action == 'withdraw') {
+                                    withdrawHandler();
+                                  } else if (action == 'delete') {
+                                    deleteWalletHandler();
+                                  }
+                                } 
                                 }}>Send</div>
                         </div>
                     </div>
