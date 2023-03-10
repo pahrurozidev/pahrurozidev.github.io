@@ -2,10 +2,13 @@ import React, { Fragment, useEffect, useState } from 'react'
 import Header from './Header';
 import Footer from './Footer';
 import Id from '../../../assets/Id.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import {GrFormClose} from 'react-icons/gr';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Index() {
+  const location = useLocation();
   const [showFormAdd, setShowFormAdd] = useState(false);
   const [cards, setCards] = useState([]);
   const [card, setcard] = useState([]);
@@ -48,7 +51,7 @@ export default function Index() {
       name: inputForm.name,
       color1: "#654e4e",
       color2: "#877373",
-      place: inputForm.place.toUpperCase(),
+      place: inputForm.place,
       count: 0,
     })
   }
@@ -59,7 +62,7 @@ export default function Index() {
     const pin = JSON.parse(localStorage.getItem('Pin'));
 
     if (!pin) {
-        alert('Setup before your PIN!')
+        setPinBeforeNotify();
 
         setShowPinForm(true);
         setShowFormAdd(false);
@@ -70,9 +73,10 @@ export default function Index() {
     const result = cards.filter((card) => card.name == formValue.name);
 
     if (result.length > 0) {
-        alert('Wallet name have ready!')
-        setShowFormAdd(false);
+        walletNameHaveReadyNotify();
         return false;
+      } else {
+        setShowFormAdd(false);
     }
 
     cards.push(formValue)
@@ -86,6 +90,8 @@ export default function Index() {
       setCards(items);
     }
 
+    walletAddNotify()
+
     setShowFormAdd(false)
   }
 
@@ -93,9 +99,17 @@ export default function Index() {
 
     // get DB
     const items = JSON.parse(localStorage.getItem('Database'));
+
     if (items) {
       setCards(items);
     }
+
+    if (location.search == '?delete') {
+      walletDeleteNotify();
+    } else if (location.search == '?setting') {
+      settingSuccessHandler();
+    }
+
   }, []);
 
   const totalCount = () => {
@@ -108,10 +122,68 @@ export default function Index() {
     return total;
   }
 
+  const settingSuccessHandler = () => toast.success('Setting has been updated!', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+
+  const walletAddNotify = () => toast.success('🦄 Wallet successfully created!', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+
+  const walletDeleteNotify = () => toast.success('Wallet successfully Deleted!', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+
+  const walletNameHaveReadyNotify = () => toast.warning('Wallet name has ready!', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+  
+    const setPinBeforeNotify = () => toast.warning('Setup before your PIN!', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+
   return (
     <Fragment>
       <Header />
       <main class="w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 m-auto my-[105px] font-inter border-slate-900 border-opacity-20">
+
+      {/* notification alert */}
+      <ToastContainer />
 
         {/* header */}
         <section class="text-center font-semibold mb-10">
@@ -146,7 +218,7 @@ export default function Index() {
               <div class="flex flex-col justify-between relative text-sm font-bold font-inter text-end">
                 <div class="opacity-80">
                   <p class="text-sm">{card.name}</p>
-                  <p class="text-sm text-[12px]">{card.place}</p>
+                  <p class="text-sm text-[12px]">{card.place.toUpperCase()}</p>
                 </div>
                 <div class="flex justify-end">
                   <img src={Id} class="rounded-lg w-10 h-7 shadow" alt="" />
@@ -174,7 +246,7 @@ export default function Index() {
             <div class="flex flex-col gap-1">
               <label for="place">Place Name</label>
               <select name="place" id="place" class="px-1 border h-9 rounded-lg text-black text-opacity-60" required onChange={(event) => getValue(event)}>
-                <option selected>Select Place Wallet</option>
+                <option>Select Place Wallet</option>
                 <option value="cash">CASH</option>
                 <option value="bri">BRI</option>
                 <option value="atm">BNI</option>
