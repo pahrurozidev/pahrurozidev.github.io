@@ -40,7 +40,7 @@ export default function Index() {
     // set pin ls
     localStorage.setItem('Pin', JSON.stringify({key: pinValue}));
     setShowPinForm(false);
-    alert('Pin successful to setup!')
+    pinSuccessToSetupNotify();
   }
 
   const getValue = (event) => {
@@ -107,7 +107,9 @@ export default function Index() {
     if (location.search == '?delete') {
       walletDeleteNotify();
     } else if (location.search == '?setting') {
-      settingSuccessHandler();
+      settingSuccessNotify();
+    } else if (location.search == '?walletUpdate') {
+      walletSuccessUpdatedHandler();
     }
 
   }, []);
@@ -122,7 +124,18 @@ export default function Index() {
     return total;
   }
 
-  const settingSuccessHandler = () => toast.success('Setting has been updated!', {
+  const walletSuccessUpdatedHandler = () => toast.success('Wallet Successfull updated!', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+
+  const settingSuccessNotify = () => toast.success('Setting has been updated!', {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -134,6 +147,17 @@ export default function Index() {
     });
 
   const walletAddNotify = () => toast.success('🦄 Wallet successfully created!', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+
+  const pinSuccessToSetupNotify = () => toast.success('Pin successful to setup!', {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -246,7 +270,6 @@ export default function Index() {
             <div class="flex flex-col gap-1">
               <label for="place">Place Name</label>
               <select name="place" id="place" class="px-1 border h-9 rounded-lg text-black text-opacity-60" required onChange={(event) => getValue(event)}>
-                <option>Select Place Wallet</option>
                 <option value="cash">CASH</option>
                 <option value="bri">BRI</option>
                 <option value="atm">BNI</option>

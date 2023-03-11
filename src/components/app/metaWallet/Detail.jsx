@@ -30,12 +30,13 @@ export default function Detail() {
     const [showPinForm, setShowPinForm] = useState(false);
     const [pinVerify, setPinVerify] = useState('');
     const [action, setAction] = useState('');
+    const [showUpdatePinForm, setShowUpdatePinForm] = useState(false);
+    const [updatePin, setUpdatePin] = useState('');
 
     useEffect(() => {
         // get DB
         const items = JSON.parse(localStorage.getItem('Database'));
 
-        
         const c = items.filter((c) => c.name == slug);
 
         c.forEach((i) => {
@@ -85,6 +86,13 @@ export default function Detail() {
     }
 
     const onSaveEditedHandler = () => {
+
+        const result = item.filter((i) => i.name == cards.name);
+
+        if (result.length > 0) {
+            walletNameHaveReadyNotify();
+            return false;
+        }
         
         const wallet = item.filter((i) => i.name == slug);
         const walletInstead = item.filter((i) => i.name !== slug);
@@ -98,7 +106,7 @@ export default function Detail() {
 
         localStorage.setItem('Database', JSON.stringify(walletInstead));
 
-        navigate(`/app/meta-wallet`);
+        navigate(`/app/meta-wallet?walletUpdate`);
     }
 
     const getValue = (event) => {
@@ -106,6 +114,20 @@ export default function Detail() {
         inputForm[event.target.id] = event.target.value;
 
         setValue(inputForm.count)
+    }
+
+    const onSubmitUpdatePinHandler = () => {
+        localStorage.setItem('Pin', JSON.stringify({key: updatePin}));
+
+        setShowUpdatePinForm(false);
+        setShowSettingOption(false);
+        updatePinSuccessNotify();
+    }
+
+    const getUpdatePinValueHandler = (event) => {
+        const userPin = event.target.value;
+
+        setUpdatePin(userPin);
     }
 
     const editGetValue = (event) => {
@@ -123,8 +145,6 @@ export default function Detail() {
         const wallet = item.filter((i) => i.name !== slug);
 
         localStorage.setItem('Database', JSON.stringify(wallet));
-
-        walletDeleteNotify();
 
         navigate('/app/meta-wallet?delete');
     }
@@ -198,6 +218,28 @@ export default function Detail() {
         });
 
     const withdrawSuccessHandler = () => toast.success('Withdraw Successfull!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+    const updatePinSuccessNotify = () => toast.success('Update Pin Successfull!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+    const walletNameHaveReadyNotify = () => toast.warning('Wallet name has ready!', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -391,13 +433,20 @@ export default function Detail() {
                             <div className='flex flex-col gap-1 text-sm font-semibold'>
                                 <div className='flex gap-1 items-center'>
                                     <div>Pin</div>
-                                    <BsPen className='cursor-pointer hover:text-blue-300'/>
+                                    <BsPen className='cursor-pointer hover:text-blue-300' 
+                                        onClick={() => setShowUpdatePinForm(true)}/>
                                 </div>
                                 <div className='font-mono'>* * * * * *</div>
                             </div>
                             <div className='flex justify-between text-center gap-4'>
+                                {/* save */}
                                 <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500'
-                                onClick={() => saveColorHandler()}>Save</div>
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    setAction('mainSettingUpdate');
+                                    setShowPinForm(true);
+                                }}>Save</div>
+                                {/* delete */}
                                 <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-red-500'
                                 onClick={(event) => {
                                     event.preventDefault();
@@ -448,7 +497,11 @@ export default function Detail() {
                             </div>
                             <div className='flex justify-between text-center gap-4 mt-3'>
                                 <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500' 
-                                onClick={() => onSaveEditedHandler()}>Save</div>
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    setAction('walletUpdate');
+                                    setShowPinForm(true);
+                                }}>Save</div>
                             </div>
                         </div>
                     </div>
@@ -472,7 +525,7 @@ export default function Detail() {
                             onChange={(event) => enterPinHandler(event)} />
                         </div>
                         <div className='flex justify-between text-center gap-4 mt-3'>
-                            <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500' 
+                            <div className='border border-white w-full p-2 rounded-lg hover:cursor-pointer hover:bg-blue-500' 
                             onClick={(event) => {
                                 if(onSubmitSetupPin()) {
                                   if (action == 'topup') {
@@ -481,9 +534,44 @@ export default function Detail() {
                                     withdrawHandler();
                                   } else if (action == 'delete') {
                                     deleteWalletHandler();
-                                  }
-                                } 
-                                }}>Send</div>
+                                  } else if (action == 'walletUpdate') {
+                                    onSaveEditedHandler();
+                                  } else if (action == 'mainSettingUpdate') {
+                                    saveColorHandler();
+                                  } else if (action == 'updatePin') {
+                                    onSubmitUpdatePinHandler();
+                                  } 
+                                }}}>Send</div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+
+                 {/* update pin */}
+                <section class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-900 opacity-100 items-center font-inter text-sm text-white ${showUpdatePinForm ? 'flex' : 'hidden'}`}>
+                <div class={`bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl relative`}>
+                    <h1 className='text-2xl'>Update <span className='font-bold underline'>PIN Here!</span></h1>
+
+                    <GrFormClose 
+                        className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
+                        onClick={() => setShowUpdatePinForm(false)}/>
+
+                    <div className='flex flex-col gap-4 mt-3'>
+                        <div class="flex flex-col gap-1">
+                            <label for="count">Enter Your Pin!</label>
+                            <input type="number" id='pin' name='pin' class="px-2 border h-9 rounded-lg text-black" placeholder="Your Pin"
+                            //   value={cards.name}
+                            required 
+                            onChange={(event) => getUpdatePinValueHandler(event)} />
+                        </div>
+                        <div className='flex justify-between text-center gap-4 mt-3'>
+                            <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500' 
+                            onClick={(event) => {
+                                    event.preventDefault();
+                                    setAction('updatePin');
+                                    setShowUpdatePinForm(false);
+                                    setShowPinForm(true);
+                                }}>Update</div>
                         </div>
                     </div>
                 </div>
