@@ -49,7 +49,7 @@ const Database = () => {
             {
                 position: "Fullstack Web Developer Student",
                 company: 'Binar Academy',
-                period: 'Aug 2022 - Persent · 2 month',
+                period: 'Aug 2022 - Jan 2023 · 5 month',
                 companyIcon: './binar.png',
                 link: 'https://www.binaracademy.com/',
             },
@@ -77,9 +77,18 @@ const Database = () => {
         ],
         proyek: [
             {
-                name: 'Sipantas App',
+                name: 'E-Flight Ticket Platform Based Web App',
+                period: 'Dec 2022 - Jan 2023 · 1 month',
+                link: 'https://github.com/pahrurozidev/flypass-frontend',
+                tech: [
+                    { name: 'React' },
+                    { name: 'Bootstrap' },
+                ]
+            },
+            {
+                name: 'Social Assistance Reporting Information System',
                 period: 'Jun 2022 - Jul 2022 · 1 month',
-                link: 'http://sipantas.herokuapp.com/',
+                link: 'https://github.com/pahrurozidev/si-pantas',
                 tech: [
                     { name: 'Laravel' },
                     { name: 'Bootstrap' },
