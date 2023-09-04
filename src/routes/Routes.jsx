@@ -14,6 +14,7 @@ import UseReduce from "../components/code/useReduce/UseReduce";
 import App from "../pages/App";
 import MetaWallet from '../components/app/metaWallet/Index'
 import WalletDetail from '../components/app/metaWallet/Detail'
+import HistoryApp from '../components/app/historyapp/index';
 
 export default function Routes() {
     const database = Database();
@@ -31,10 +32,15 @@ export default function Routes() {
                     <Route path="/code/useRef" element={<UseRef />} />
                     <Route path="/code/useReducer" element={<UseReduce />} />
 
-                    {/* my app */}
+                    {/* apps */}
                     <Route path="/app" element={<App />} />
+
+                    {/* meta-wallet */}
                     <Route path="/app/meta-wallet" element={<MetaWallet />} />
                     <Route path="/app/meta-wallet/:slug" element={<WalletDetail />} />
+
+                    {/* historyapp */}
+                    <Route path="/app/historyapp" element={<HistoryApp />} />
                 </Switch>
                 <Menu />
             </HashRouter>
