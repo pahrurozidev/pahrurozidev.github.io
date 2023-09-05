@@ -172,6 +172,23 @@ export default function UseState() {
                 created: 'Aug 26, 22',
                 link: 'Custom Hooks',
             },
+        ],
+        posts: [
+            {
+                name: './posts/img1.png',
+            },
+            {
+                name: './posts/img2.png',
+            },
+            {
+                name: './posts/img3.png',
+            },
+            {
+                name: './posts/img4.png',
+            },
+            {
+                name: './posts/img5.png',
+            },
         ]
     }
 }
