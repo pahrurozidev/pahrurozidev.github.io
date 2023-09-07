@@ -175,19 +175,29 @@ export default function UseState() {
         ],
         posts: [
             {
-                name: './posts/img1.png',
+                id: 1,
+                url: './posts/img1.png',
+                name: 'image1'
             },
             {
-                name: './posts/img2.png',
+                id: 2,
+                url: './posts/img2.png',
+                name: 'image2'
             },
             {
-                name: './posts/img3.png',
+                id: 3,
+                url: './posts/img3.png',
+                name: 'image3'
             },
             {
-                name: './posts/img4.png',
+                id: 4,
+                url: './posts/img4.png',
+                name: 'image4'
             },
             {
-                name: './posts/img5.png',
+                id: 5,
+                url: './posts/img5.png',
+                name: 'image5'
             },
         ]
     }

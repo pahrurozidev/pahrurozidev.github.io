@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Status() {
     return (
-        <section className="flex justify-between px-4 py-3 border">
+        <section className="flex justify-between p-4 border text-sm">
             <div className="text-center">
                 <h1 className="font-semibold">42</h1>
                 <p>Posts</p>

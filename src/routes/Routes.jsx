@@ -12,9 +12,10 @@ import UseContext from "../components/code/useContext/UseContext";
 import UseRef from "../components/code/useRef/UseRef";
 import UseReduce from "../components/code/useReduce/UseReduce";
 import App from "../pages/App";
-import MetaWallet from '../components/app/metaWallet'
+import MetaWallet from '../components/app/metaWallet/Index'
 import WalletDetail from '../components/app/metaWallet/Detail'
-import HistoryApp from '../components/app/historyapp';
+import HistoryApp from '../components/app/historyapp/Index';
+import Post from "../components/app/historyapp/Post";
 
 export default function Routes() {
     const database = Database();
@@ -41,6 +42,7 @@ export default function Routes() {
 
                     {/* historyapp */}
                     <Route path="/app/historyapp" element={<HistoryApp />} />
+                    <Route path="/app/historyapp/:id" element={<Post />} />
                 </Switch>
                 <Menu />
             </HashRouter>

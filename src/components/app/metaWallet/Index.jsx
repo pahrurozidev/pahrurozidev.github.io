@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Id from '../../../assets/Id.png'
 import { Link, useLocation, useParams } from 'react-router-dom';
-import {GrFormClose} from 'react-icons/gr';
+import { GrFormClose } from 'react-icons/gr';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -38,7 +38,7 @@ export default function Index() {
 
   const onSubmitSetupPin = () => {
     // set pin ls
-    localStorage.setItem('Pin', JSON.stringify({key: pinValue}));
+    localStorage.setItem('Pin', JSON.stringify({ key: pinValue }));
     setShowPinForm(false);
     pinSuccessToSetupNotify();
   }
@@ -62,21 +62,21 @@ export default function Index() {
     const pin = JSON.parse(localStorage.getItem('Pin'));
 
     if (!pin) {
-        setPinBeforeNotify();
+      setPinBeforeNotify();
 
-        setShowPinForm(true);
-        setShowFormAdd(false);
-  
-        return false;
+      setShowPinForm(true);
+      setShowFormAdd(false);
+
+      return false;
     }
 
     const result = cards.filter((card) => card.name == formValue.name);
 
     if (result.length > 0) {
-        walletNameHaveReadyNotify();
-        return false;
-      } else {
-        setShowFormAdd(false);
+      walletNameHaveReadyNotify();
+      return false;
+    } else {
+      setShowFormAdd(false);
     }
 
     cards.push(formValue)
@@ -133,7 +133,7 @@ export default function Index() {
     draggable: true,
     progress: undefined,
     theme: "light",
-    });
+  });
 
   const settingSuccessNotify = () => toast.success('Setting has been updated!', {
     position: "top-right",
@@ -144,7 +144,7 @@ export default function Index() {
     draggable: true,
     progress: undefined,
     theme: "light",
-    });
+  });
 
   const walletAddNotify = () => toast.success('🦄 Wallet successfully created!', {
     position: "top-right",
@@ -155,7 +155,7 @@ export default function Index() {
     draggable: true,
     progress: undefined,
     theme: "light",
-    });
+  });
 
   const pinSuccessToSetupNotify = () => toast.success('Pin successful to setup!', {
     position: "top-right",
@@ -166,7 +166,7 @@ export default function Index() {
     draggable: true,
     progress: undefined,
     theme: "light",
-    });
+  });
 
   const walletDeleteNotify = () => toast.success('Wallet successfully Deleted!', {
     position: "top-right",
@@ -177,7 +177,7 @@ export default function Index() {
     draggable: true,
     progress: undefined,
     theme: "light",
-    });
+  });
 
   const walletNameHaveReadyNotify = () => toast.warning('Wallet name has ready!', {
     position: "top-right",
@@ -188,9 +188,9 @@ export default function Index() {
     draggable: true,
     progress: undefined,
     theme: "light",
-    });
-  
-    const setPinBeforeNotify = () => toast.warning('Setup before your PIN!', {
+  });
+
+  const setPinBeforeNotify = () => toast.warning('Setup before your PIN!', {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -199,15 +199,15 @@ export default function Index() {
     draggable: true,
     progress: undefined,
     theme: "light",
-    });
+  });
 
   return (
     <Fragment>
       <Header />
       <main class="w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 m-auto my-[105px] font-inter border-slate-900 border-opacity-20">
 
-      {/* notification alert */}
-      <ToastContainer />
+        {/* notification alert */}
+        <ToastContainer />
 
         {/* header */}
         <section class="text-center font-semibold mb-10">
@@ -226,8 +226,8 @@ export default function Index() {
         <section class="grid sm:grid-cols-2 gap-4 text-xs">
           {cards.map((card) => (
             <Link to={`/app/meta-wallet/${card.name}`}
-              className={`h-36 flex justify-between p-5 text-white rounded-lg cursor-pointer hover:border relative`} 
-              style={{backgroundImage: `linear-gradient(to right, ${card.color1}, ${card.color2})`}}>
+              className={`h-36 flex justify-between p-5 text-white rounded-lg cursor-pointer hover:border relative`}
+              style={{ backgroundImage: `linear-gradient(to right, ${card.color1}, ${card.color2})` }}>
               <div class="flex flex-col justify-between">
                 <div>
                   <p class="opacity-50 font-bold">Current Asset</p>
@@ -299,25 +299,25 @@ export default function Index() {
         {/* setting pin */}
         <section class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-900 opacity-90 items-center font-inter text-sm text-white ${showPinForm ? 'flex' : 'hidden'}`}>
           <div class={`bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl relative`}>
-              <h1 className='text-2xl'>Setting <span className='font-bold underline'>PIN Here!</span></h1>
+            <h1 className='text-2xl'>Setting <span className='font-bold underline'>PIN Here!</span></h1>
 
-              <GrFormClose 
-                  className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
-                  onClick={() => setShowPinForm(false)}/>
+            <GrFormClose
+              className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
+              onClick={() => setShowPinForm(false)} />
 
-              <div className='flex flex-col gap-4 mt-3'>
-                  <div class="flex flex-col gap-1">
-                      <label for="count">Enter Your Pin!</label>
-                      <input type="number" id='pin' name='pin' class="px-2 border h-9 rounded-lg text-black" placeholder="Your Pin"
-                    //   value={cards.name}
-                      required 
-                      onChange={(event) => getPinValueHandler(event)} />
-                  </div>
-                  <div className='flex justify-between text-center gap-4 mt-3'>
-                      <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500' 
-                      onClick={() => onSubmitSetupPin()}>Save</div>
-                  </div>
+            <div className='flex flex-col gap-4 mt-3'>
+              <div class="flex flex-col gap-1">
+                <label for="count">Enter Your Pin!</label>
+                <input type="number" id='pin' name='pin' class="px-2 border h-9 rounded-lg text-black" placeholder="Your Pin"
+                  //   value={cards.name}
+                  required
+                  onChange={(event) => getPinValueHandler(event)} />
               </div>
+              <div className='flex justify-between text-center gap-4 mt-3'>
+                <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500'
+                  onClick={() => onSubmitSetupPin()}>Save</div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
