@@ -8,7 +8,7 @@
     "dev": "vite --port 8080",
     "build": "vite build",
     "preview": "vite preview --port 8080",
-    "backup": "vite build && git add . && git commit -m \"Update\" && git push",
+    "backup": "vite build && git add . && git commit -m \"Update\" && git push origin master",
     "deploy": "npm run backup && git add -f dist && git commit -m \"Update\" && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
