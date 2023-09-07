@@ -29,7 +29,7 @@ const Database = () => {
                     { name: "Lombok" },
                     { name: "Web Developer" }
                 ],
-                desc: { name: 'Hi there!👋 Welcome to my profile. Nice to meet you! My name is Pahrurozi. I\'m a web developer focused on creating great web experiences. My coding journey begin with a fascinating for computers. I enjoy to create beautifully designed, intuitive and functional websites. Thank you for visiting my profile, and I look forward to connecting with you!' },
+                desc: { name: 'Hi there!👋 Welcome to my profile. Nice to meet you! My name is Pahrurozi. I\'m a web developer focused on creating great web experiences. My coding journey began with a fascinating for computers science. I enjoy to create beautifully designed, intuitive and functional websites. Thank you for visiting my profile, and I look forward to connecting with you!' },
                 interests: [
                     { name: 'Frontend Developer' },
                     { name: 'React Developer' },
