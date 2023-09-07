@@ -78,7 +78,7 @@ export default function Posts() {
                 {
                     posts.map((post) => (
                         <Link to={`/app/historyapp/${post.id}`}>
-                            <img src={`https://raw.githubusercontent.com/pahrurozidev/pahrurozidev.github.io/gh-pages/posts/${post.url}`} key={post.id} alt={post.name} />
+                            <img src={`https://raw.githubusercontent.com/pahrurozidev/pahrurozidev.github.io/posts/public/posts/${post.url}`} key={post.id} alt={post.name} />
                         </Link>
                     ))
                 }
