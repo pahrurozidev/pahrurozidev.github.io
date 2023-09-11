@@ -68,7 +68,7 @@ export default function Post() {
                                     <p className="text-[10px]">{post.place}</p>
                                 </div>
                             </div>
-                            <img src={`https://raw.githubusercontent.com/pahrurozidev/pahrurozidev.github.io/posts/public/posts/${post.url}`} className="my-2" alt="" />
+                            <img src={`https://raw.githubusercontent.com/pahrurozidev/pahrurozidev.github.io/posts/public/posts/${post.src}`} className="my-2" alt={post.alt} />
                             <div className="px-3">
                                 <div className="flex justify-between">
                                     <div className="flex gap-3">

@@ -10,7 +10,7 @@ export default function Header() {
                 <div>
                     <h1 className="font-semibold text-lg">Pahrurozi</h1>
                     <div className="flex gap-2 mt-[6px] text-[12px]">
-                        <button type="button" className="w-16 px-2 py-1 text-white bg-blue-400 rounded-md">Follow</button>
+                        <button type="button" className="w-16 px-2 py-1 text-white bg-blue-500 rounded-md">Follow</button>
                         <button type="button" className="w-16 px-2 py-1 rounded-md bg-neutral-200">Message</button>
                         <button type="button" className="px-2 py-1 rounded-md bg-neutral-200"><RiUserAddLine /></button>
                     </div>
