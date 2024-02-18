@@ -20,9 +20,14 @@ import Post from "../components/app/historyapp/Post";
 export default function Routes() {
     const database = Database();
 
+    const path = window.location.href;
+    const url = path.split('#')[1];
+
+    console.log(url);
+
     return (
         <React.Fragment>
-            <div className="bg-black">
+            <div className={url !== undefined ? 'bg-white text-black' : 'bg-black text-white'}>
                 <Navbar navbar={database.navbar} />
                 <HashRouter>
                     <Switch>
