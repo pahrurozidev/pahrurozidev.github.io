@@ -21,7 +21,7 @@ export default function Main() {
                 <Proyek proyek={database.proyek} />
                 <Menu />
             </main>
-            <Firework style={{ position: 'fixed', top: 0, left: 0, zIndex: 1 }} />
+            <Firework style={{ position: 'fixed', top: 0, left: 0, zIndex: 2, }} />
         </React.Fragment>
     );
 }

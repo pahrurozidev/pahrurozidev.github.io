@@ -22,31 +22,33 @@ export default function Routes() {
 
     return (
         <React.Fragment>
-            <Navbar navbar={database.navbar} />
-            <HashRouter>
-                <Switch>
-                    <Route exact path="/" element={<Main />} />
-                    <Route path="/code" element={<Code code={database.code} />} />
-                    <Route path="/code/useState" element={<UseState />} />
-                    <Route path="/code/useEffect" element={<UseEffect />} />
-                    <Route path="/code/useContext" element={<UseContext />} />
-                    <Route path="/code/useRef" element={<UseRef />} />
-                    <Route path="/code/useReducer" element={<UseReduce />} />
+            <div className="bg-black">
+                <Navbar navbar={database.navbar} />
+                <HashRouter>
+                    <Switch>
+                        <Route exact path="/" element={<Main />} />
+                        <Route path="/code" element={<Code code={database.code} />} />
+                        <Route path="/code/useState" element={<UseState />} />
+                        <Route path="/code/useEffect" element={<UseEffect />} />
+                        <Route path="/code/useContext" element={<UseContext />} />
+                        <Route path="/code/useRef" element={<UseRef />} />
+                        <Route path="/code/useReducer" element={<UseReduce />} />
 
-                    {/* apps */}
-                    <Route path="/app" element={<App />} />
+                        {/* apps */}
+                        <Route path="/app" element={<App />} />
 
-                    {/* meta-wallet */}
-                    <Route path="/app/meta-wallet" element={<MetaWallet />} />
-                    <Route path="/app/meta-wallet/:slug" element={<WalletDetail />} />
+                        {/* meta-wallet */}
+                        <Route path="/app/meta-wallet" element={<MetaWallet />} />
+                        <Route path="/app/meta-wallet/:slug" element={<WalletDetail />} />
 
-                    {/* historyapp */}
-                    <Route path="/app/historyapp" element={<HistoryApp />} />
-                    <Route path="/app/historyapp/:id" element={<Post />} />
-                </Switch>
-                <Menu />
-            </HashRouter>
-            <Footer footer={database.footer} />
+                        {/* historyapp */}
+                        <Route path="/app/historyapp" element={<HistoryApp />} />
+                        <Route path="/app/historyapp/:id" element={<Post />} />
+                    </Switch>
+                    <Menu />
+                </HashRouter>
+                <Footer footer={database.footer} />
+            </div>
         </React.Fragment>
     );
 }
