@@ -6,6 +6,8 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { GrFormClose } from 'react-icons/gr';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 export default function Index() {
   const location = useLocation();
@@ -202,7 +204,7 @@ export default function Index() {
   });
 
   return (
-    <Fragment>
+    <DndProvider backend={HTML5Backend}>
       <Header />
       <main class="w-11/12 sm:w-5/6 md:w-2/3 lg:w-1/2 m-auto my-[105px] font-inter border-slate-900 border-opacity-20">
 
@@ -322,6 +324,6 @@ export default function Index() {
         </section>
       </main>
       {/* <Footer /> */}
-    </Fragment>
+    </DndProvider>
   )
 }

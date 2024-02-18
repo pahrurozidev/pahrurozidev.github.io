@@ -57,7 +57,7 @@ export default function HomeItem({ brand, tags, desc, interests, profile }) {
                 </li>
                 <li>
                     <a href="https://www.linkedin.com/in/pahrurozi/" target="_blank">
-                        <RiLinkedinBoxFill className="text-blue-800" />
+                        <RiLinkedinBoxFill className="text-blue-500" />
                     </a>
                 </li>
             </ul>

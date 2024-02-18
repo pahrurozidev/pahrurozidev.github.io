@@ -17,7 +17,7 @@ export default function TechStuck({ techStucks }) {
             <h1 className="text-[16px] font-bold">Tech Stack</h1>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 mt-5">
                 <div>
-                    <h2 className="text-sm font-semibold text-zinc-700">Languages</h2>
+                    <h2 className="text-sm font-semibold text-zinc-400">Languages</h2>
                     <ul className="text-sm mt-3 grid gap-4">
                         <li className="flex items-center gap-3"><RiHtml5Fill className="text-xl text-red-600" /> HTML5</li>
                         <li className="flex items-center gap-3"><RiCss3Fill className="text-xl text-cyan-600" /> CSS 3</li>
@@ -26,46 +26,46 @@ export default function TechStuck({ techStucks }) {
                     </ul>
                 </div>
                 <div>
-                    <h2 className="text-sm font-semibold text-zinc-700">JavaScript UI</h2>
+                    <h2 className="text-sm font-semibold text-zinc-400">JavaScript UI</h2>
                     <ul className="text-sm mt-3 grid gap-4">
                         <li className="flex items-center gap-3"><RiReactjsFill className="text-xl text-blue-400" /> React</li>
                     </ul>
                 </div>
                 <div>
-                    <h2 className="text-sm font-semibold text-zinc-700">Plateform as a Service</h2>
+                    <h2 className="text-sm font-semibold text-zinc-400">Plateform as a Service</h2>
                     <ul className="text-sm mt-3 grid gap-4">
                         <li className="flex items-center gap-3"><SiHeroku className="text-xl text-blue-800" />Heroku</li>
                     </ul>
                 </div>
                 <div>
-                    <h2 className="text-sm font-semibold text-zinc-700">Build Tools</h2>
+                    <h2 className="text-sm font-semibold text-zinc-400">Build Tools</h2>
                     <ul className="text-sm mt-3 grid gap-4">
                         <li className="flex items-center gap-3"><SiWebpack className="text-xl text-blue-400" />Webpack</li>
                         <li className="flex items-center gap-3"><SiVite className="text-xl text-yellow-400" />Vite</li>
                     </ul>
                 </div>
                 <div>
-                    <h2 className="text-sm font-semibold text-zinc-700">Frameworks (Fullstack)</h2>
+                    <h2 className="text-sm font-semibold text-zinc-400">Frameworks (Fullstack)</h2>
                     <ul className="text-sm mt-3 grid gap-4">
                         <li className="flex items-center gap-3"><FaLaravel className="text-xl text-red-600" />Laravel</li>
                     </ul>
                 </div>
                 <div>
-                    <h2 className="text-sm font-semibold text-zinc-700">Databases</h2>
+                    <h2 className="text-sm font-semibold text-zinc-400">Databases</h2>
                     <ul className="text-sm mt-3 grid gap-4">
                         <li className="flex items-center gap-3"><SiMysql className="text-xl text-blue-800" />MySQL</li>
                         <li className="flex items-center gap-3"><SiMongodb className="text-xl text-green-600" />MongoDB</li>
                     </ul>
                 </div>
                 <div>
-                    <h2 className="text-sm font-semibold text-zinc-700">Frontend Frameworks</h2>
+                    <h2 className="text-sm font-semibold text-zinc-400">Frontend Frameworks</h2>
                     <ul className="text-sm mt-3 grid gap-4">
                         <li className="flex items-center gap-3"><SiBootstrap className="text-xl text-blue-600" />Bootstrap</li>
                         <li className="flex items-center gap-3"><SiTailwindcss className="text-xl text-sky-500" />Tailwind CSS</li>
                     </ul>
                 </div>
                 <div>
-                    <h2 className="text-sm font-semibold text-zinc-700">Static Web Hosting</h2>
+                    <h2 className="text-sm font-semibold text-zinc-400">Static Web Hosting</h2>
                     <ul className="text-sm mt-3 grid gap-4">
                         <li className="flex items-center gap-3"><SiNetlify className="text-xl text-sky-400" />Netlify</li>
                     </ul>

@@ -6,13 +6,14 @@ import Experiences from "../components/experiences/Experiences";
 import Badges from "../components/badges/Badges";
 import Proyek from "../components/proyek/Proyek";
 import Menu from "../components/menu/Menu";
+import Firework from "../components/firework_effect/Index";
 
 export default function Main() {
     const database = Database();
 
     return (
         <React.Fragment>
-            <main>
+            <main style={{ color: 'white', position: 'relative', zIndex: 2 }}>
                 <Home home={database.home} />
                 <TechStuck techStucks={database.techStuck} />
                 <Experiences experiences={database.experiences} />
@@ -20,6 +21,7 @@ export default function Main() {
                 <Proyek proyek={database.proyek} />
                 <Menu />
             </main>
+            <Firework style={{ position: 'fixed', top: 0, left: 0, zIndex: 1 }} />
         </React.Fragment>
     );
 }
