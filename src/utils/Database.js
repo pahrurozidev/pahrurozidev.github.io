@@ -29,13 +29,14 @@ const Database = () => {
                     { name: "Lombok" },
                     { name: "Web Developer" }
                 ],
-                desc: { name: 'Hi there!👋 Welcome to my profile. Nice to meet you! My name is Pahrurozi. I\'m a web developer focused on creating great web experiences. My coding journey began with a fascinating for computer science. I enjoy to create beautifully designed, intuitive and functional websites. Thank you for visiting my profile, and I look forward to connecting with you!' },
+                desc: { name: 'Hi there!👋 Welcome to my profile. Nice to meet you! My name is Pahrurozi, I\'m an experienced web developer with a proven track record of creating dynamic and responsive web applications. Proficient in Front End and Back End technologies, I excel in problem solving and thrive in collaborative environments. Committed to continuous learning and staying updated with emerging trends, I am passionate about delivering high quality solutions that exceed client expectations and drive meaningful results.' },
                 interests: [
                     { name: 'Frontend Developer' },
                     { name: 'React Developer' },
                     { name: 'Node Js' },
                     { name: 'Laravel Developer' },
                     { name: 'Web Developer' }
+
                 ],
             }
         ],
