@@ -18,7 +18,7 @@ export default function Main() {
                 <TechStuck techStucks={database.techStuck} />
                 <Experiences experiences={database.experiences} />
                 <Badges badges={database.badges} />
-                <Proyek proyek={database.proyek} />
+                {/* <Proyek proyek={database.proyek} /> */}
                 <Menu />
             </main>
             <Firework style={{ position: 'fixed', top: 0, left: 0, zIndex: 2, }} />
