@@ -2,8 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react'
 import Header from './Header'
 import User from '../../../assets/user.png'
 import { useNavigate, useParams } from 'react-router-dom';
-import {BsGear, BsPen} from 'react-icons/bs';
-import {GrFormClose} from 'react-icons/gr';
+import { BsGear, BsPen } from 'react-icons/bs';
+import { GrFormClose } from 'react-icons/gr';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,6 +17,7 @@ export default function Detail() {
     const [showEditForm, setShowEditForm] = useState(false);
     const [card, setCard] = useState([]);
     const [value, setValue] = useState(0);
+    const [rupiahValue, setRupiahValue] = useState();
     const [cards, setCards] = useState([{
         name: '',
         place: '',
@@ -93,7 +94,7 @@ export default function Detail() {
             walletNameHaveReadyNotify();
             return false;
         }
-        
+
         const wallet = item.filter((i) => i.name == slug);
         const walletInstead = item.filter((i) => i.name !== slug);
 
@@ -110,14 +111,33 @@ export default function Detail() {
     }
 
     const getValue = (event) => {
+        const value = event.target.value;
         const inputForm = { ...cards };
-        inputForm[event.target.id] = event.target.value;
+        inputForm[event.target.id] = value;
 
-        setValue(inputForm.count)
+        // Konversi nilai input ke angka
+        const numericValue = Number(value.replace(/\D/g, ''));
+
+        // Format angka menjadi format Rupiah tanpa simbol "Rp"
+        const formattedValue = formatRupiah(numericValue);
+        setRupiahValue(formattedValue);
+
+        setValue(removeDots(inputForm.count))
     }
 
+    function removeDots(value) {
+        return value.replace(/\./g, '');
+    }
+
+    const formatRupiah = (number) => {
+        return new Intl.NumberFormat('id-ID', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(number);
+    };
+
     const onSubmitUpdatePinHandler = () => {
-        localStorage.setItem('Pin', JSON.stringify({key: updatePin}));
+        localStorage.setItem('Pin', JSON.stringify({ key: updatePin }));
 
         setShowUpdatePinForm(false);
         setShowSettingOption(false);
@@ -153,11 +173,11 @@ export default function Detail() {
         topupSuccessHandler();
 
         const c = item.filter((c) => c.name == slug);
-        
+
         c[0].count = c[0].count + parseInt(value);
-        
+
         localStorage.setItem('Database', JSON.stringify(item));
-        
+
         setShowTopupForm(false);
     }
 
@@ -204,7 +224,7 @@ export default function Detail() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+    });
 
     const topupSuccessHandler = () => toast.success('Top Up Successfull!', {
         position: "top-right",
@@ -215,7 +235,7 @@ export default function Detail() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+    });
 
     const withdrawSuccessHandler = () => toast.success('Withdraw Successfull!', {
         position: "top-right",
@@ -226,7 +246,7 @@ export default function Detail() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+    });
 
     const updatePinSuccessNotify = () => toast.success('Update Pin Successfull!', {
         position: "top-right",
@@ -237,7 +257,7 @@ export default function Detail() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+    });
 
     const walletNameHaveReadyNotify = () => toast.warning('Wallet name has ready!', {
         position: "top-right",
@@ -248,7 +268,7 @@ export default function Detail() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+    });
 
     return (
         <Fragment>
@@ -261,7 +281,7 @@ export default function Detail() {
                 {/* setting */}
                 <div className='flex justify-end -mt-5'>
                     <div className='border-2 rounded-full border-white shadow'>
-                        <BsGear className='w-6 h-6 hover:cursor-pointer' onClick={() => setShowSettingOption(true)}/>
+                        <BsGear className='w-6 h-6 hover:cursor-pointer' onClick={() => setShowSettingOption(true)} />
                     </div>
                 </div>
 
@@ -274,10 +294,10 @@ export default function Detail() {
 
                         <div class="mt-3 flex items-center justify-center gap-2">
                             <button
-                                class="w-20 flex items-center justify-center text-sm font-inter border px-4 py-1 rounded-full shadow hover:bg-red-500 hover:text-white" onClick={() => setShowWithdrawForm(true)}><span
+                                class="w-20 flex items-center justify-center text-sm font-inter border px-4 py-1 rounded-full shadow hover:bg-red-500 hover:text-white" onClick={() => { setShowWithdrawForm(true), setRupiahValue('') }}><span
                                     class="opacity-50 hover:opacity-100">Withdraw</span></button>
                             <button
-                                class="w-20 flex items-center justify-center text-sm font-inter border px-4 py-1 rounded-full shadow hover:bg-sky-600 hover:text-white" onClick={() => setShowTopupForm(true)}><span
+                                class="w-20 flex items-center justify-center text-sm font-inter border px-4 py-1 rounded-full shadow hover:bg-sky-600 hover:text-white" onClick={() => { setShowTopupForm(true), setRupiahValue('') }}><span
                                     class="opacity-50 hover:opacity-100">Top Up</span></button>
                         </div>
                     </section>))}
@@ -337,8 +357,8 @@ export default function Detail() {
                         {/* <!-- wallet count --> */}
                         <div class="flex flex-col gap-1">
                             <label for="count">Wallet Count</label>
-                            <input type="number" id="count" class="px-2 border h-9 rounded-lg text-black"
-                                placeholder="Wallet Count" onChange={(event) => getValue(event)} required />
+                            <input type="text" id="count" class="px-2 border h-9 rounded-lg text-black"
+                                placeholder="Wallet Count" value={rupiahValue} onChange={(event) => getValue(event)} required />
                         </div>
                         {/* <!-- button --> */}
                         <div class="ml-auto flex gap-2 mt-2">
@@ -372,8 +392,8 @@ export default function Detail() {
                         {/* <!-- wallet count --> */}
                         <div class="flex flex-col gap-1">
                             <label for="count">Wallet Count</label>
-                            <input type="number" id="count" class="px-2 border h-9 rounded-lg text-black"
-                                placeholder="Wallet Count" onChange={(event) => getValue(event)} required />
+                            <input type="text" id="count" class="px-2 border h-9 rounded-lg text-black"
+                                placeholder="Wallet Count" value={rupiahValue} onChange={(event) => getValue(event)} required />
                         </div>
                         {/* <!-- button --> */}
                         <div class="ml-auto flex gap-2 mt-2">
@@ -395,11 +415,11 @@ export default function Detail() {
                     <div class={`bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl relative`}>
                         <h1 className='text-2xl'>Appearance</h1>
 
-                        <GrFormClose 
+                        <GrFormClose
                             className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
                             onClick={() => {
                                 setShowSettingOption(false)
-                            }}/>
+                            }} />
 
                         <div className='flex flex-col gap-4 mt-3'>
                             {/* name */}
@@ -407,7 +427,7 @@ export default function Detail() {
                                 {card.map((c) => (<div className='text-sm font-semibold'>{c.name}</div>))}
                                 <BsPen className='cursor-pointer hover:text-blue-300'
                                     onClick={() => {
-                                        setShowEditForm(true) 
+                                        setShowEditForm(true)
                                         setShowSettingOption(false)
 
                                         // start value
@@ -416,7 +436,7 @@ export default function Detail() {
                                             place: card[0].place,
                                         })
 
-                                    }}/>
+                                    }} />
                             </div>
 
                             {/* gradient color */}
@@ -424,35 +444,35 @@ export default function Detail() {
                                 <div className='text-sm font-semibold'>Gradient Color</div>
                                 <div className='flex justify-between gap-4 mt-2'>
                                     {/* color 1 */}
-                                    <input type="color" name='color1' value={colors.color1} className='w-full bg-slate-500 h-9 rounded-lg cursor-pointer' onChange={(event) => getColorHandler(event)}/>
+                                    <input type="color" name='color1' value={colors.color1} className='w-full bg-slate-500 h-9 rounded-lg cursor-pointer' onChange={(event) => getColorHandler(event)} />
                                     {/* color 2 */}
-                                    <input type="color" name='color2' value={colors.color2} onChange={(event) => getColorHandler(event)} className='w-full bg-slate-500 h-9 rounded-lg cursor-pointer'/>
+                                    <input type="color" name='color2' value={colors.color2} onChange={(event) => getColorHandler(event)} className='w-full bg-slate-500 h-9 rounded-lg cursor-pointer' />
                                 </div>
                             </div>
                             {/* Pin */}
                             <div className='flex flex-col gap-1 text-sm font-semibold'>
                                 <div className='flex gap-1 items-center'>
                                     <div>Pin</div>
-                                    <BsPen className='cursor-pointer hover:text-blue-300' 
-                                        onClick={() => setShowUpdatePinForm(true)}/>
+                                    <BsPen className='cursor-pointer hover:text-blue-300'
+                                        onClick={() => setShowUpdatePinForm(true)} />
                                 </div>
                                 <div className='font-mono'>* * * * * *</div>
                             </div>
                             <div className='flex justify-between text-center gap-4'>
                                 {/* save */}
                                 <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500'
-                                onClick={(event) => {
-                                    event.preventDefault();
-                                    setAction('mainSettingUpdate');
-                                    setShowPinForm(true);
-                                }}>Save</div>
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        setAction('mainSettingUpdate');
+                                        setShowPinForm(true);
+                                    }}>Save</div>
                                 {/* delete */}
                                 <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-red-500'
-                                onClick={(event) => {
-                                    event.preventDefault();
-                                    setAction('delete');
-                                    setShowPinForm(true);
-                                }}>Delete</div>
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        setAction('delete');
+                                        setShowPinForm(true);
+                                    }}>Delete</div>
                             </div>
                         </div>
                     </div>
@@ -463,45 +483,45 @@ export default function Detail() {
                     <div class={`bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl relative`}>
                         <h1 className='text-2xl'>Wallet Update <span className='font-bold underline'>Here!</span></h1>
 
-                        <GrFormClose 
+                        <GrFormClose
                             className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
-                            onClick={() => setShowEditForm(false)}/>
+                            onClick={() => setShowEditForm(false)} />
 
                         <div className='flex flex-col gap-4 mt-3'>
                             <div class="flex flex-col gap-1">
                                 <label for="count">Wallet Name</label>
                                 <input type="text" id='name' name='name' class="px-2 border h-9 rounded-lg text-black" placeholder="Wallet Count"
-                                value={cards.name}
-                                required 
-                                onChange={(event) => editGetValue(event)} />
+                                    value={cards.name}
+                                    required
+                                    onChange={(event) => editGetValue(event)} />
                             </div>
                             <div class="flex flex-col gap-1">
                                 <label for="count">Wallet Place</label>
-                                <select 
-                                    name="place" 
-                                    id="place" 
+                                <select
+                                    name="place"
+                                    id="place"
                                     class="px-1 border h-9 rounded-lg text-black text-opacity-60"
                                     onChange={(event) => editGetValue(event)}
                                     value={cards.place}
                                     required>
-                                        <option value="cash">CASH</option>
-                                        <option value="bri">BRI</option>
-                                        <option value="bni">BNI</option>
-                                        <option value="bca">BCA</option>
-                                        <option value="crypto">CRYPTO</option>
-                                        <option value="dana">DANA</option>
-                                        <option value="gopay">GOPAY</option>
-                                        <option value="linkaja">LINK AJA</option>
-                                        <option value="opo">OPO</option>
+                                    <option value="cash">CASH</option>
+                                    <option value="bri">BRI</option>
+                                    <option value="bni">BNI</option>
+                                    <option value="bca">BCA</option>
+                                    <option value="crypto">CRYPTO</option>
+                                    <option value="dana">DANA</option>
+                                    <option value="gopay">GOPAY</option>
+                                    <option value="linkaja">LINK AJA</option>
+                                    <option value="opo">OPO</option>
                                 </select>
                             </div>
                             <div className='flex justify-between text-center gap-4 mt-3'>
-                                <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500' 
-                                onClick={(event) => {
-                                    event.preventDefault();
-                                    setAction('walletUpdate');
-                                    setShowPinForm(true);
-                                }}>Save</div>
+                                <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500'
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        setAction('walletUpdate');
+                                        setShowPinForm(true);
+                                    }}>Save</div>
                             </div>
                         </div>
                     </div>
@@ -509,72 +529,73 @@ export default function Detail() {
 
                 {/* Enter pin */}
                 <section class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-900 opacity-90 items-center font-inter text-sm text-white ${showPinForm ? 'flex' : 'hidden'}`}>
-                <div class={`bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl relative`}>
-                    <h1 className='text-2xl'>Enter your <span className='font-bold underline'>PIN Here!</span></h1>
+                    <div class={`bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl relative`}>
+                        <h1 className='text-2xl'>Enter your <span className='font-bold underline'>PIN Here!</span></h1>
 
-                    <GrFormClose 
-                        className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
-                        onClick={() => setShowPinForm(false)}/>
+                        <GrFormClose
+                            className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
+                            onClick={() => setShowPinForm(false)} />
 
-                    <div className='flex flex-col gap-4 mt-3'>
-                        <div class="flex flex-col gap-1">
-                            <label for="count">Enter Your Pin!</label>
-                            <input type="number" id='pin' name='pin' class="px-2 border h-9 rounded-lg text-black" placeholder="Your Pin"
-                            //   value={cards.name}
-                            required 
-                            onChange={(event) => enterPinHandler(event)} />
-                        </div>
-                        <div className='flex justify-between text-center gap-4 mt-3'>
-                            <div className='border border-white w-full p-2 rounded-lg hover:cursor-pointer hover:bg-blue-500' 
-                            onClick={(event) => {
-                                if(onSubmitSetupPin()) {
-                                  if (action == 'topup') {
-                                    topupHandler();
-                                  } else if (action == 'withdraw') {
-                                    withdrawHandler();
-                                  } else if (action == 'delete') {
-                                    deleteWalletHandler();
-                                  } else if (action == 'walletUpdate') {
-                                    onSaveEditedHandler();
-                                  } else if (action == 'mainSettingUpdate') {
-                                    saveColorHandler();
-                                  } else if (action == 'updatePin') {
-                                    onSubmitUpdatePinHandler();
-                                  } 
-                                }}}>Send</div>
+                        <div className='flex flex-col gap-4 mt-3'>
+                            <div class="flex flex-col gap-1">
+                                <label for="count">Enter Your Pin!</label>
+                                <input type="number" id='pin' name='pin' class="px-2 border h-9 rounded-lg text-black" placeholder="Your Pin"
+                                    //   value={cards.name}
+                                    required
+                                    onChange={(event) => enterPinHandler(event)} />
+                            </div>
+                            <div className='flex justify-between text-center gap-4 mt-3'>
+                                <div className='border border-white w-full p-2 rounded-lg hover:cursor-pointer hover:bg-blue-500'
+                                    onClick={(event) => {
+                                        if (onSubmitSetupPin()) {
+                                            if (action == 'topup') {
+                                                topupHandler();
+                                            } else if (action == 'withdraw') {
+                                                withdrawHandler();
+                                            } else if (action == 'delete') {
+                                                deleteWalletHandler();
+                                            } else if (action == 'walletUpdate') {
+                                                onSaveEditedHandler();
+                                            } else if (action == 'mainSettingUpdate') {
+                                                saveColorHandler();
+                                            } else if (action == 'updatePin') {
+                                                onSubmitUpdatePinHandler();
+                                            }
+                                        }
+                                    }}>Send</div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </section>
 
-                 {/* update pin */}
+                {/* update pin */}
                 <section class={`w-full h-full fixed z-50 left-0 top-0 bg-slate-900 opacity-100 items-center font-inter text-sm text-white ${showUpdatePinForm ? 'flex' : 'hidden'}`}>
-                <div class={`bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl relative`}>
-                    <h1 className='text-2xl'>Update <span className='font-bold underline'>PIN Here!</span></h1>
+                    <div class={`bg-gradient-to-tr bg-slate-500 m-auto w-11/12 sm:w-2/3 md:w-1/2 lg:w-2/5 h-58 opacity-100 rounded-lg flex flex-col justify-center gap-4 p-7 shadow-2xl relative`}>
+                        <h1 className='text-2xl'>Update <span className='font-bold underline'>PIN Here!</span></h1>
 
-                    <GrFormClose 
-                        className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
-                        onClick={() => setShowUpdatePinForm(false)}/>
+                        <GrFormClose
+                            className='text-white text-3xl absolute right-2 top-2 cursor-pointer'
+                            onClick={() => setShowUpdatePinForm(false)} />
 
-                    <div className='flex flex-col gap-4 mt-3'>
-                        <div class="flex flex-col gap-1">
-                            <label for="count">Enter Your Pin!</label>
-                            <input type="number" id='pin' name='pin' class="px-2 border h-9 rounded-lg text-black" placeholder="Your Pin"
-                            //   value={cards.name}
-                            required 
-                            onChange={(event) => getUpdatePinValueHandler(event)} />
-                        </div>
-                        <div className='flex justify-between text-center gap-4 mt-3'>
-                            <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500' 
-                            onClick={(event) => {
-                                    event.preventDefault();
-                                    setAction('updatePin');
-                                    setShowUpdatePinForm(false);
-                                    setShowPinForm(true);
-                                }}>Update</div>
+                        <div className='flex flex-col gap-4 mt-3'>
+                            <div class="flex flex-col gap-1">
+                                <label for="count">Enter Your Pin!</label>
+                                <input type="number" id='pin' name='pin' class="px-2 border h-9 rounded-lg text-black" placeholder="Your Pin"
+                                    //   value={cards.name}
+                                    required
+                                    onChange={(event) => getUpdatePinValueHandler(event)} />
+                            </div>
+                            <div className='flex justify-between text-center gap-4 mt-3'>
+                                <div className='border border-white w-full p-2 rounded-lg  hover:cursor-pointer hover:bg-blue-500'
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        setAction('updatePin');
+                                        setShowUpdatePinForm(false);
+                                        setShowPinForm(true);
+                                    }}>Update</div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </section>
             </main>
 
